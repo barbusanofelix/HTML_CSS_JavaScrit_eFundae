@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <style>
+        body { font-family: sans-serif; display: flex; gap: 50px; padding: 20px; }
+        .contenedor { width: 150px; border: 2px dashed #ccc; padding: 10px; }
+        .caja {
+            width: 100px;
+            height: 50px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;/* Centra verticalmente dentro de la caja */
+            justify-content: center;/* Centra horizontalmente dentro de la caja */
+            color: white;
+            font-weight: bold;
+            background-color: #3498db;
+        }
+
+        /* Ejemplo con POSITION RELATIVE */
+        .especial-top {
+        /*position: relative;*/
+        /*position: absolute;*/  /* La pasa a 1er lugar. La caja 2 deja de existir para las otras */
+        /* Sin ninguna posicion usa por defecto position:static y en ella el top NO funciona.*/
+        /* y la caja se ve en su posicion 2, igual que el resto.
+            top: 45px; /* Se desplaza pero NO empuja */
+            background-color: #e5423c; /* Rojo */
+            z-index: 1; /* Para que pase por encima de la siguiente */
+        }
+
+        /* Ejemplo con MARGIN */
+        .especial-margin {
+            margin-top: 25px; /* Crea espacio y SÍ empuja */
+            background-color: #2ecc71; /* Verde */
+        }
+    </style>
+    <title>Position Relative</title>
+</head>
+<body>
+
+    <div class="contenedor">
+        <p>Usando <code>top</code></p>
+        <div class="caja">Caja 1</div>
+        <div class="caja especial-top">Caja 2 (Top)</div>
+        <div class="caja">Caja 3</div>
+        <div class="caja">Caja 4</div>
+    </div>
+
+    <div class="contenedor">
+        <p>Usando <code>margin</code></p>
+        <div class="caja">Caja 1</div>
+        <div class="caja especial-margin">Caja 2 (Margin)</div>
+        <div class="caja">Caja 3</div>
+        <div class="caja">Caja 4</div>
+    </div>
+
+</body>
+</html>

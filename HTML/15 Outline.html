@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>OutLine</title>
+
+        <style>
+            h4 {
+                font-weight:normal;
+            }
+
+            /*Estilo para todos los <p>*/
+            /* Estilo General para <p>*/
+            p {
+                padding:5px;
+                border:2px solid black;
+
+                outline-style:solid;
+            }
+            /* Luego definimos un estilo para cada clase de los <p>, adicional al estilo general de los p*/
+            p.outl1{
+                outline-width:thin;
+                outline-color:green; /*llamado del color en forma standar, el nombre del color */
+            }
+
+            p.outl2{
+                outline-width:medium;
+                outline-color:#ff0000;  /*LLamado del color en Houtladecimal*/
+            }
+
+            p.outl3 {
+                outline-width:thick;
+                outline-color:rgb(0,255,0); /* llamado del color RGB , verde*/
+            }
+
+            p.outl4 {
+                outline-width:8px;
+                outline-color:hsl(0,100%,50%); /* LLamado del color HSL , rojo*/
+            }
+
+            /*            Demonstration of the outline shorthand property:*/
+
+            p.outl5 {
+                outline: dashed red;
+                outline-width:thin;
+                border-radius:10px;
+            }
+            p.outl6 {
+                outline-width:medium;
+                outline: dotted red;
+                border-radius:7px;
+            }
+            p.outl7 {
+
+                outline: 3px solid yellow;
+                border-radius:8px;
+                /*Para aplicar un offset considera que el contorno se mueve considerando como cero su cara externa, es decir, aqui el outline tiene un ancho de 3px y el border tiene un ancho de 2px ( definido en la etiqueta p, al inicio del CSS, asi que para que outline no cubra el border y se vea completo , hay que usar un offser minimo de 3px ( ancho outline) +2px (ancho border) = 5px ...y si queremos que se vea un espacio entre el borde y el outline pues tiene que ser 6px o más */
+                outline-offset:-7px;  /* Dibuja el outline por dentro del borde */
+                padding: 15px;
+            }
+            p.outl8 {
+                outline: 8px ridge pink;
+                border-radius:9px;
+                outline-offset:2px;  /*Separa el outline del border en 5px*/
+
+            }
+
+            .box {
+                padding:15px;
+                margin:50px;
+                border:1px solid #054df6;
+                outline-width:3px
+            }
+
+            .solid {
+                outline-color:green;
+                outline-style:solid;
+            }
+
+            .dashed{
+                outline:dashed red;
+
+            }
+
+            .offset {
+                outline-offset:10px;
+                outline-color:violet;
+                outline-style:solid;   /*Para que se vea, ademas de definir el color hay que colocar que sea solido o dashed u otro*/
+
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <h1>Propiedades de OutLine</h1>
+
+        <h4>OutLine se comporta "similar" al border porque se ubica despues del borde pero es un elemento flotante y NO
+            AFECTA el tamaño de la caja.</h4>
+        <p class="outl1">Ejemplo outline thin</p>
+        <p class="outl2">Ejemplo outline medium</p>
+        <p class="outl3">Ejemplo outline thick</p>
+        <p class="outl4">Ejemplo outline personalizado de 8px</p>
+        <hr>
+        <h4>propiedad Shorthand: Es la aplicacion de hasta 3 atributos al outline ( similar a la aplicacion a border</h4>
+        <p class="outl5">Ejemplo outline thin</p>
+        <p class="outl6">Ejemplo outline medium</p>
+        <p class="outl7">Ejemplo outline thick</p>
+        <p class="outl8">Ejemplo outline personalizado de 8px</p>
+
+        <div class="box solid">outline solido color verde con propiedades individuales</div>
+        <div class="box dashed">outline punteado de color rojo con propiedades hechas con shorthand</div>
+        <div class="box offset">outline punteado de color rojo con propiedades hechas con shorthand</div>
+
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!-- La idea es mostrar que dada etiqueta en HTML y CSS se trata como una caja.
+    Se muestra un div al cual se le colocan los 4 elementos:
+    content : Donde realmente se muestra el contenido.
+    padding: Espacio transparente entre el contenido y borde
+    border: Delimita el padding y es transparente ( no acepta texto)
+    margin: El espacio que rodea los 3 anteriores y los separa del resto de los elementos.-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Box Model</title>
+        <style>
+            /* content es un div que envuelve a las clases subconten_1 */
+
+            #content {
+                display:flex;           /*Para organizar las clases=subcontent_1 */
+                flex-direction:row;     /*Para colocar los subcontent_1 en forma horizontal*/
+                justify-content:center; /*Centrar los subcontent_1 */
+                border:3px solid blueviolet;   /* Colocarle un borde blueviolet a content */
+
+            }
+
+            /*Define las cajas representadas por los div subcontent_1 */
+            .subcontent_1  {
+                width: 200px;
+                background-color: lightgray;
+                padding: 50px;
+                border: 15px solid green;
+                margin: 20px;
+
+            }
+
+            .lineacontorno {
+             /* dibuja el outline fuera del borde. Es flotante. No ocupa espacio */
+                outline: 15px solid blue;
+            /* Crea un offset ( un espacio ) de 2px por encima del borde y apartir de esos 2px se dibuja*/
+                outline-offset:2px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h2>Demonstracion del modelo de caja</h2>
+        <p>El modelo de caja es esencialmente una caja que envuelve a cada elemento HTML </p>
+        <p>Este consiste ( desde la parte mas interna hasta la mas externa) : content ( contenido ) , padding (relleno,
+            dentro del borde), border ( borde ) , and margin.(margen, fuera del borde)</p>
+        <div id="content">
+            <div class="subcontent_1">
+                Este texto es el contenido de la caja. Hemos añadido 50px de padding, 15px de borde solido en verde y
+                20px de margen..... Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </div>
+            <div class="subcontent_1 lineacontorno"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, beatae
+                corporis doloribus
+                ducimus harum magnam magni modi molestias obcaecati provident quae quas qui quia quos soluta sunt velit
+                voluptatem voluptatibus?
+            </div>
+        </div>
+    </body>
+</html>

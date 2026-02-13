@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title> Hola Mundo </title>
+
+        <!--         Para mostrar bien las vocales acentuadas y ñ , indicarle charset='UTF-8' -->
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+        <!-- ! PARA RESALTAR LOS COMENTARIOS
+        Usar el carácter después de #, colocándolo al principio del comentario.
+
+        Alertas: # ! Este es un comentario crítico (Rojo)
+
+        Preguntas: # ? ¿Cómo funciona esta función? (Azul)
+
+        Tareas: # TODO: Esto ya lo hace PyCharm de serie (Naranja/Amarillo)
+
+        Resaltado: # * Información importante resaltada (Verde)
+
+        Tachado: # // Esta lógica está obsoleta (Gris con línea) -->
+
+
+        Formulario muy basico para Texto
+        <form action="">
+            <!-- * El input genera un recuadro para esperar lo que el usuario introducirá
+                  el atributo id del input hace el link con el for del label , que debe ser igual
+                  'recibir-texto'
+                  El label, lo que se muestra en pantalla es lo que colocamos entre las etiquetas de label
+                  'name' en el input sera el nombre de la variable que llevará al servidor el texto introducido
+                        -->
+            <label for="recibir-texto">Introduce Nombre</label>
+            <input type="text" id="recibir-texto" name="nombre">
+        </form>
+        <br>
+
+        Formulario para email
+        <!-- * Al colocar el type='email' valida que sea formato de email    -->
+        <form>
+            <label for="email">Introduce email</label>
+            <input type="email" id="email">
+        </form>
+        <br>
+
+        Formulario por Selección ( Selector ) simple ( 1 opción )
+        <!-- *   El select actúa como el input
+                y va acompañado con la etiqueta <option> y una option para cada opción-->
+        <form>
+            <label for="color">Selecciona 1 color: </label>
+            <!--    Atributo size : Cantidad de elementos a mostrar en el selector      -->
+            <select id="color" size="2">
+                <option>Rojo</option>
+                <option>Verde</option>
+                <!-- ? Se puede incluir el atributo selected para la opción por defecto
+                     sin 'selected' mostrará seleccionado el 1ero de la lista: Rojo         -->
+                <option selected>Azul</option>
+            </select>
+        </form>
+        <br>
+
+        Formulario para Selección ( Selector ) Multiple ( Elegir varias opciones )
+
+        Atención: Hay que añadir el atributo multiple en el select
+        Para seleccionar varios colores presionar [Ctrl] y elegir varios colores.
+        <!-- !   El select actúa como el input
+                y va acompañado con la etiqueta <option> y una option para cada opción-->
+        <form>
+            <label for="colorMultiple">Selecciona 1 color: </label>
+            <!--    Atributo size : Cantidad de elementos a mostrar en el selector      -->
+            <select id="colorMultiple" size="3" multiple>
+                <option>Rojo</option>
+                <option>Verde</option>
+                <!-- Se puede incluir el atributo selected para la opción por defecto
+                     sin 'selected' mostrara seleccionado el 1ero de la lista: Rojo         -->
+                <option selected>Azul</option>
+            </select>
+        </form>
+        <br>
+
+        Formulario con varias lineas de Texto o TextArea.
+
+        <!-- ?    El textarea permite definir la cantidad de lineas (rows) y la cantidad de
+                caracteres por line (cols)
+                Por defecto muestra 2 lineas x 22 caracteres, al no colocar los atributos rows
+                 y cols
+
+                 Al igual que el input, el atributo name es el nombre de la variable que se enviará-->
+        <form action="">
+            <textarea name="mensaje" id=""></textarea>
+
+        </form>
+        <br>
+
+        Botones en formularios: Super elemental.
+        <form action="">
+            <button>
+                <!-- *            Asi muestra en pantalla solo un pequeño botón -->
+            </button>
+        </form>
+        <br>
+
+        Botones en formulario: Colocarle texto al botón.
+        <!-- -->
+        <form action="">
+            <!-- !        Sin atributos, en la etiqueta 'button',  al presionar el botón "recarga" la página -->
+            <button>
+                1er botón
+            </button>
+
+        </form>
+        <br>
+
+        Botones en formularios: Colocar el tipo de botón.
+        <!-- ?      Al hacer el botón type='button' el botón parece que "no hace nada." -->
+        <!-- ! PERO SI HACE: POR DEFECTO, AL PRESIONAR EL BOTÓN, HACE UN SUBMIT ( ENVíA EL FORMULARIO)        -->
+        <!-- ! Como en el formulario NO se indica el destino, el formulario se envia a la propia pagina          -->
+        <form action="">
+            <button type="button">
+                Botón type button
+            </button>
+        </form>
+        <br>
+
+        Botones en formularios: Crear un alerta al presionar el botón.
+
+        <!--?     El type debe ser -button- y en este caso, el evento es al presionarlo 'onclick'.
+                'alert('Boton presionado');' es directamente javascript.
+                 El mensaje que mostrara la alerta sera : 'Botón presionado'-->
+        <form action="">
+            <button type="button" onclick="alert('Boton presionado');">
+                Alerta
+            </button>
+        </form>
+        <br>
+
+        FORMULARIO CON DATA LIST ( LISTA DE DATOS )
+
+        <!-- ? Necesitamos usar el input, el datalist con option(s) y conectar el datalist con el input
+               usando el id    -->
+        <form action="">
+
+            <input list="colores">
+            <datalist id="colores">
+                <option value="Rojo">Verde</option>
+                <option value="Verde">Gris</option>
+            </datalist>
+
+
+        </form>
+
+    </body>
+</html>

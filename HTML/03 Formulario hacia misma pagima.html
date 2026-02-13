@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+    </head>
+    <body>
+
+        <!-- ? Para obtener el color seleccionado hay una cadena:
+                 el form le asigna a resultado el valor del color seleccionado.
+                 -->
+        <form oninput="resultado.value = color_seleccionado.value">
+
+            <label>Elige un color:</label>
+            <!-- ?  A traves de list colores enlazamos la lista con el input y el valor a mandar sera lo que este
+                    dentro de color_seleccionado      -->
+            <input list="colores" name="color_seleccionado">
+
+            <datalist id="colores">
+                <!--  ? La opcion realmente devolvera lo que esta en cada value y no los colores entre las etiquetas                  -->
+                <option value="Red">Rojiso</option>
+                <option value="Green">Verduzco</option>
+            </datalist>
+
+            <br><br>
+
+
+            <p>El servidor recibiría: <b>
+                <output name="resultado"></output>
+            </b></p>
+
+        </form>
+
+        VERLO DIRECTO EN LA BARRA DEL NAVEGADOR ( DONDE SE MUESTRA LA URL )
+        <h2>Ver el valor a enviar directo en el tab o pestaña</h2>
+        <!--  En este ejemplo lo mostrado en la URL es:
+                http://localhost:63342/WorkSpace%20curso%20Python_HTML_CSS_JavaScript/
+                14%20CURSO%20PROGRAMACION%20WEB%20DE%20eFUNDAE/HTML/03%20Formulario%20hacia%20misma%20pagima.html?mi_color=Rojo
+                -->
+        <!--    ! Fijate al final del chorizo anterior: Muestra mi_color=Rojo      -->
+
+        <!-- ?   Antes lo que muestra es:
+               http://localhost:63342/WorkSpace%20curso%20Python_HTML_CSS_JavaScript/
+               14%20CURSO%20PROGRAMACION%20WEB%20DE%20eFUNDAE/HTML/03%20Formulario%20hacia%20misma%20pagima.html?
+               _ijt=amftq3jsh396jr1v02ckpub4cq&_ij_reload=RELOAD_ON_SAVE
+               -->
+        <form method="GET">
+            <input list="colorSeleccionado" name="mi_color">
+            <datalist id="colorSeleccionado">
+                <option value="Red">Rojo</option>
+            </datalist>
+            <button aria-expanded="false" aria-controls="menu">Boton con aria</button>
+            <button type="submit">Enviar</button>
+        </form>
+
+
+
+
+
+    </body>
+</html>

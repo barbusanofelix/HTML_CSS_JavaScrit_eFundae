@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!-- Ejemplo sencillo de usar la función de accesibilidad de ARIA  -->
+<!-- Se muestra un botón de menu y al oprimirlo mostraría un menu , con su titulo
+     y al volver a presionar el boton se esconde el menu.
+
+     Lo complete colocando un titulo en una etiqueta <p> , que sigue el mismo comportamiento que el menu ( aparece / desaparece)-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+        <button id="btn" aria-expanded="false" aria-controls="menu">Menú</button>
+
+<!-- * id="btn": Es la etiqueta que usaremos en el script para "atrapar" el botón.
+aria-expanded="false": El estado inicial. Le dice al lector de pantalla: "Hay un contenido aquí,
+pero ahora mismo está cerrado".
+aria-controls="menu": Establece la relación legal. Dice que este botón manda sobre el elemento que tenga el id="menu".
+ que es la lista sin orden -->
+
+        <p id="tituloMenu" style="display:none"> Opciones que hay que convertirlas en links</p>
+
+        <ul id="menu" style="display:none;">
+            <li>Inicio</li>
+            <li>Fin</li>
+        </ul>
+<!--? La lista esta enlazada con el button con id=btn a traves del aria-controls=menu
+    id="menu": El nombre que coincide con el mando del botón.
+
+style="display: none;": Esto lo oculta visualmente y también para los lectores de pantalla.
+Es la forma más segura de que algo esté "cerrado" al empezar.
+-->
+        <script>
+            const btn = document.getElementById('btn');   // Guardamos el botón, con id=btn ,  en variable btn
+            const menu = document.getElementById('menu'); // Guardamos el menu, de la lista, en una variable llamada menu.
+            const titulo = document.getElementById('tituloMenu');   // Guardamos el parrafo con id=tituloMenu en titulo
+
+            btn.onclick = () => {  // Cuando alguien haga clic en el botón...
+            // PASO A: Leer el estado actual. ¿Es igual a 'true'?
+
+            // aria-expand inicia en false asi que en la primera vez abierto sera FALSE
+            const abierto = btn.getAttribute('aria-expanded') === 'true';
+
+            // 1. Decidimos los nuevos valores basándonos en el estado actual ( que inicio en False )
+            // Usamos el operador ternario ?  que equivale a un if abierto asigna el 1ero y sino el 2do , despues del :
+            const nuevoEstadoAria = abierto ? 'false' : 'true';  // Si abierto es TRUE asignamos False y como inicia en False le asigna TRUE            const nuevaVisibilidad = abierto ? 'none' : 'block'; //
+            const nuevaVisibilidad = abierto ? 'none' : 'block'; // abierto inicia en FALSE asi que asigna block para que se vea.
+
+            // 2. Aplicamos los cambios de una vez a los atributos necesarios para el boton ( cambiar de false-true-false)
+            // Para titulo y menu, modificamos el display a none o block cada vez que se pulse el boton.
+            btn.setAttribute('aria-expanded', nuevoEstadoAria);
+            titulo.style.display = nuevaVisibilidad;
+            menu.style.display = nuevaVisibilidad;
+
+            };
+        </script>
+<!-- ! La ubicación mejor de los scripts es aqui, justo antes de </>body>  ( Cierre del body ) -->
+    </body>
+</html>

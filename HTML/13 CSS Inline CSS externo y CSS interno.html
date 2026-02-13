@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>CSS inline y CSS externo</title>
+        <!--         Si descomentamos el link y borramos la misma llamada luego de <style></style> se aplica
+                     el último CSS leído sino llama a id ó clases  -->
+        <!--   <link rel="stylesheet" href="misEstilos13.css">       -->
+
+        <style>
+            /* El id prioridad esta asignado a h1 y como los id son unicos no hace falta colocar h1#prioridad /* Se aplicara al h1 que tiene el id="prioridad" */
+            #prioridad {
+                color:greenyellow;
+            }
+
+            h1 {
+                color:darkgray;
+            }
+
+            p {
+                color:blue;
+            }
+
+        </style>
+<link rel="stylesheet" href="misEstilos13.css">
+    </head>
+    <body>
+        <h1 id="prioridad">3 formas de añadir CSS. Violeta externo, naranja interno, verdeAmarilloso: Se dio prioridad al id aunque el violeta se llamo despues porque id tiene prioridad sobre las etiquetas sin id</h1>
+        <h1 style="border:2px solid Tomato;">Probando el color de borde</h1>
+        <p style="color:red;">Este parrafo usa CSS inline color rojo, compite
+            contra el estilo interno de p de color azul y con el externo de p con color verde. Como estamos
+            aplicando el estilo inline de color rojo , ese sera el estilo aplicado pues inline tiene
+            prioridad sobre ( a. </p>
+    </body>
+</html>

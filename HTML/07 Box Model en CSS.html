@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Modelo Caja</title>
+        <style>
+            .box{
+                background-color:lightblue;
+                width:200px;
+                height:200px;
+                border:5px solid red;
+                padding:10px;
+            }
+            .box1{
+                /* El tamaño de la caja define el contido pero NO el padding y border*/
+                box-sizing:content-box;
+            }
+            .box2{
+                /* el tamaño de la caja incluye el padding y border */
+                box-sizing:border-box;
+            }
+
+        </style>
+    </head>
+    <body>
+    <div class="box box1">Caja 1</div>
+        <div class="box box2">Caja 2</div>
+    </body>
+</html>

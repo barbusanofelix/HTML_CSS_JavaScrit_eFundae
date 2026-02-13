@@ -1,0 +1,17 @@
+/* Estilo a las etiquetas principales */
+/* Usado en archivo "12 Primer Ejemplo CSS hoja estilos" */
+
+            /*Fondo del body :azul claro */
+            body{
+                background-color:lightblue;
+            }
+
+            h1 {
+                color:white;
+                text-align:center;
+            }
+
+            p {
+                font-family:verdana;
+                font-size: 20px
+            }
