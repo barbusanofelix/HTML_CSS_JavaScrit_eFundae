@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Prueba respositorio</title>
+        <style>
+            /*La opacidad especifica la opacidad/transparencia de un elemento.Puede tomar valores de 0 a 1. Cuanto mas pequeño mas opacidad o transparencia.*/
+            body {
+                background-color:darkgreen;
+
+            }
+            h1 {
+                background-color:lightseagreen;
+            }
+
+            p {
+                background-color:lightcoral;
+            }
+
+            div {
+                background-color:pink; /*Rosa puro*/
+                opacity:0.3; /*aplicamos la opacidad (es invertido 1 nitido y 0 desaparece) */
+
+            }
+            #masnitido {
+                background-color: rgba(255, 192, 203,1);  /*Rosa puro*/
+                opacity:0.3; /* Opacity es un filtro general y se aplica a todas las etiquetas despues de cambiarla*/
+            }
+
+            #background_img {
+                width:700px;
+                height:700px;
+                opacity:1;
+                border:2px red solid;
+                background-color:white;
+                background-image: url("paper.gif");
+            }
+
+
+        </style>
+
+    </head>
+    <body>
+        <h1>Pruebas de background-color</h1>
+        <p>Aplica a todos los elementos HTML</p>
+        <div>Aqui simularemos un contenido que tendrá un color de fondo rosa.
+            En CSS, la palabra "Opacidad" significa "capacidad de NO ser transparente".
+            <pre>
+            0: Es transparencia total (invisible).
+
+            1: Es opacidad total (nítido/sólido).
+
+            Valores cercanos a cero disminuyen la opacidad (hacen el objeto más invisible).
+            </pre>
+        </div>
+        <div id="masnitido">Aquí le aplicamos colores RGB pero hay que tener cuidado con la opacidad y el alpha del RGB
+            , porque ambos logran transparencia, pero la diferencia está en el alcance: uno es un "filtro general"
+            (opacity) y el otro es un "ingrediente del color" (alpha). y asi el texto no se pone tan opaco.
+            <pre>
+                Cuando dice que la opacidad es un filtro general lo que significa que al usarla se queda aplicada para el resto de elementos a menos que simplemente volvamos a colocar opacity:1;
+            </pre>
+        </div>
+        <div id="background_img">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores facere natus obcaecati possimus! Dolor impedit laborum laudantium libero magnam nesciunt non odit reprehenderit voluptas voluptatem. Accusantium adipisci neque odit!
+
+        </div>
+        <h1>Pruebas de background-color</h1>
+    </body>
+</html>
