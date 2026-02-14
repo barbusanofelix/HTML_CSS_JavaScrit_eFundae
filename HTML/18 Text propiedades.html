@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Text Color</title>
+
+        <style>
+            body {
+                background-color:lightgrey;
+                color:blue;
+            }
+
+            h1 {
+                background-color:black;
+                color:white;
+            }
+
+            div {
+                background-color:blue;
+                color:white;
+            }
+
+            .text_align {
+                color: white;
+                background-color:darkviolet;
+
+            }
+
+            .ta_center {
+                text-align:center;
+            }
+
+            .ta_left {
+                text-align:left;
+            }
+
+            .ta_right {
+                text-align:right;
+            }
+
+            .ta_justify {
+                text-align:justify;
+                text-align-last:justify;  /*Obliga a la utima linea a que se justifique*/
+            }
+
+            .img {
+                width:40x;
+                height:32px;
+                border:1px solid black;
+            }
+            .text_align_last {
+                background-color:darkgreen;
+                color:white;
+            }
+
+            .vertical_alignment {
+                background-color:#6e43a3;
+                color:white;
+            }
+
+            .div_con_img {
+                vertical-align:text-top;
+            }
+
+            .img_text_top {
+                vertical-align:top;
+            }
+            .img_text_bottom {
+                vertical-align:bottom;
+            }
+
+            .img_text_sub {   /*Alineamos la imagen como un subindice*/
+                vertical-align:sub;
+            }
+
+            .img_text_middle {   /*Alineamos la imagen al centro vertical.*/
+                vertical-align:middle;
+            }
+
+            .px-arriba { vertical-align: 10px; }
+            .px-abajo { vertical-align: -20px; }
+
+            /* Valores en porcentaje */
+            /* El % se calcula sobre el 'line-height' del párrafo */
+            .porcentaje-arriba { vertical-align: 50%; }
+            .porcentaje-abajo { vertical-align: -25%; }
+
+        </style>
+    </head>
+    <body>
+        <h1>
+            Estudiando las propiedas del color en texto, su backgroung y propiedades relacionadas
+        </h1>
+        <div>
+            <pre>
+                La idea es practicar la asignacion del color al:
+                * Texto con la propiedad color
+                * Al background con la propiedad background-color
+            </pre>
+        </div>
+
+        <p class="text_align">La alineacion horizontal se hace con text-align, y sus propiedades son: left, center,
+            right y justify</p>
+
+        <p class="text_align ta_center">Este es un texto centrado con text-align:center;</p>
+
+        <p class="text_align ta_left">Este es un texto alineado a la izquierda con text-align:left;</p>
+
+        <p class="text_align ta_right">Este es un texto alineado a la derecha con text-align:right;</p>
+
+        <div class="text_align ta_justify">Este es un texto justificado con text-align:justify; pero OJO, para que esta
+            propiedad funcione se necesita que el texto sea al menos de 2 lineas.
+
+            La ultima linea siempre se alinea a la izquierda y a la anterior(es) se le aplica la justificacion.
+
+            Si queremos que la última linea se justifique, se le aplica : text-align-last:justify;
+
+        </div>
+        <br>
+        <div class="text_align_last">
+            La propiedad text-align-last especifica como alinear la última linea de un texto.
+            <pre>
+    Esta propiedad puede tener <b>uno</b> de los siguientes valores:
+
+        auto - Valor por defecto.La última linea se alinea a la izquierda.
+        left - Se alnea a la izquierda (left).
+        right - Se alinea a la derecha (right)
+        center - Se alinea en el centro (center)
+        justify - Se justifica como el resto de las lineas.
+        start - La última linea se alinea a la izquierda de la linea. Es el valor por defecto.
+        end - La ultima linea se alinea a la derecha ( end )
+
+         start y end se usan principalmente al usar otros idiomas. Por ejemplo si se lee al reves nos interesa que la última linea se alinee a la derecha.
+     </pre>
+        </div>
+
+        <div class="vertical_alignment">
+            <pre>
+Vertical Alignment
+La propiedad vertical-align fija el alineamiento vertical de un elemento.
+
+La propiedad puede tener UNA de los siguientes valores:
+
+baseline    - Default value. The element is aligned with the baseline of the parent
+length/%    - Raises or lower an element by the specified length or percent
+sub         - The element is aligned with the subscript baseline of the parent
+super       - The element is aligned with the superscript baseline of the parent
+top         - The element is aligned with the top of the tallest element on the line
+text-top    - The element is aligned with the top of the parent element's font
+middle      - The element is placed in the middle of the parent element
+bottom      - The element is aligned with the lowest element on the line
+text-bottom - The element is aligned with the bottom of the parent element's font
+            </pre>
+        </div>
+        <h2 class="vertical_alignment">Ejemplos vertical-align</h2>
+        <p class="vertical_alignment">
+            <b>vertical-align:top;</b> Dentro del parrafo coloque una imagen. Una imagen es un elemento de linea <img
+                class="img_text_top img" src="Universal_Studio.jpg" alt="Logo Universal Studio">asi que al aplicar top
+            se alinea por la parte superior de la imagen como este ejemplo.Vertical-align se aplica a la etiqueta img (
+            no en el parrafo) .....debitis deleniti dolore eius excepturi magnam minima molestias nulla omnis optio
+            reprehenderit saepe soluta tempore, velit vitae
+            voluptates.
+        </p>
+        <p class="vertical_alignment">
+            <b> vertical-align:bottom;</b> Podemos ver que la imagen se alineo con la linea por el fondo ( bottom) Lorem
+            ipsum dolor sit amet, consectetur adipisicing elit. Ad architecto assumenda consequatur <img
+                class="img_text_bottom img" src="Universal_Studio.jpg" alt="Logo Universal Studio"> debitis deleniti
+            dolore eius excepturi magnam minima molestias nulla omnis optio reprehenderit saepe soluta
+            voluptates.
+        </p>
+        <p class="vertical_alignment">
+            <b> vertical-align:sub;</b> Podemos ver que la imagen se alineo hacia el fondo y aunque se parece muchisimo
+            a la alinacion bottom , en realidad es un poco mas arriba , en donde estaria un subindice <img
+                class="img_text_sub img" src="Universal_Studio.jpg" alt="Logo Universal Studio"> La diferencia es muy
+            sutil. debitis deleniti
+            dolore eius excepturi magnam minima molestias nulla omnis optio reprehenderit
+        </p>
+
+        <p class="vertical_alignment">
+            <b> vertical-align:middle;</b> Podemos ver que la imagen se alineo en el centro de la linea ... Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit. Ad architecto assumenda consequatur <img
+                class="img_text_middle img" src="Universal_Studio.jpg" alt="Logo Universal Studio"> debitis deleniti
+            dolore eius excepturi magnam minima molestias nulla omnis optio reprehenderit saepe soluta tempore, velit
+            vitae
+            voluptates.
+        </p>
+
+        <h2 class="vertical_alignment">Ejemplos de vertical-align con px ó % ( lenght ó % )</h2>
+        <p class="vertical_alignment">
+            Imagen movida <img src="universal_Studio.jpg" class="img px-arriba"> <b>10px hacia arriba</b>.
+        </p>
+
+        <p class="vertical_alignment">
+            Imagen movida <img src="universal_Studio.jpg" class="img px-abajo"> <b>20px hacia abajo</b>.
+        </p>
+
+        <p class="vertical_alignment">
+            Imagen al <img src="universal_Studio.jpg" class="img porcentaje-arriba"> <b>50% positivo</b> (respecto a la línea).
+        </p>
+
+        <p class="vertical_alignment">
+            Imagen al <img src="universal_Studio.jpg" class="img porcentaje-abajo"> <b>25% negativo</b>.
+        </p>
+
+
+    </body>
+</html>
