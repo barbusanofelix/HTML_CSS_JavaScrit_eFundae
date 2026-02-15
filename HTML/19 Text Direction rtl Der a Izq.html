@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .comentario-container {
+            width: 400px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #bcb9b9;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+
+            /* Aquí ocurre la magia */
+            direction: rtl;
+        }
+
+        .usuario-info {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+        }
+
+        .mensaje {
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .fecha {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Efecto de Dirección RTL (Derecha a Izquierda)</h2>
+
+    <div class="comentario-container">
+        <div class="usuario-info">Usuario_Premium</div>
+        <p class="mensaje">
+            Este comentario fluye desde la derecha. Los puntos finales quedan a la izquierda y todo el bloque se alinea automáticamente sin usar text-align: right.
+        </p>
+        <span class="fecha">Publicado hace 2 minutos.</span>
+    </div>
+
+</body>
+</html>

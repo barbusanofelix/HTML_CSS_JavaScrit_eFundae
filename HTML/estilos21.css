@@ -1,0 +1,32 @@
+/* ESTILOS DEL ARCHIVO 21 TEXT DECORATION STYLE */
+h1{
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+}
+
+h2{
+    text-decoration-line: underline;
+    text-decoration-style: double;
+    text-decoration-color: aqua;
+}
+h3{
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: brown;
+}
+
+.tdl_tds_wavy{
+text-decoration-line: underline;
+text-decoration-style: wavy;
+text-decoration-color: burlywood;
+}
+
+.todosTextDecoration{
+    color:red;
+text-decoration-color: blue;
+text-decoration-thickness: 4px;
+text-decoration-style: dashed;
+text-decoration-line: underline;
+
+
+}

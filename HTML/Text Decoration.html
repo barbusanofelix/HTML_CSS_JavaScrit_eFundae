@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Text Decoration</title>
+        <style>
+            .subrayado {
+                text-decoration-line:underline;
+                color:darkblue;
+            }
+            .tachado_total{
+                text-decoration-line:line-through;
+                color: red;
+            }
+            .overline {
+                text-decoration-line:overline;
+                color:darkcyan;
+            }
+
+            .doble_resaltado {/* Para colocar 2 estilos hay que hacerlo en una sola instruccion*/
+                text-decoration: underline overline blue wavy;   /*Lineas abajo y arriba, onduladas en rojo*/
+                /*Ademas del wavy hay solid: línea continua (es el valor por defecto), double: Dos líneas paralelas, dotted: Una línea hecha de puntos, dashed: Una línea hecha de guiones, */
+                line-height:2;  /*Linea mas alta para ver bien las lineas onduladas por encima y debajo de la linea*/
+
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <h1>Decoración de texto</h1>
+        <p class="subrayado">Decoración de texto subrayando, con text-decoration-line:underline</p>
+
+        <p class="tachado_total">Decoración de texto tachado en TODA en toda la extension de la linea, con
+            text-decoration-line:line-through</p>
+
+        <p class="overline">Decoración de texto con linea sobre el mismo, con text-decoration-line:overline</p>
+
+        <p class="doble_resaltado">Decoración de texto con 2 lineas, sobre la linea y debajo. Hay que hacerlo en una unica instruccion porque si subrayaramos en una instruccion y luego en  otra colocarle la linea sobre el texto, se sobreescribe el estilo y solo muestra una. Para lograr esto hacemos: text-decoration-line:underline overline wavy blue; . El wavy hace el ondulado</p>
+
+
+    </body>
+</html>

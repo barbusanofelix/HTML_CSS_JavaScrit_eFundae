@@ -1,0 +1,20 @@
+/* PERTENECE AL ARCHIVO 20 Text decoration color.html */
+ h1 {
+     /*Subrayamos la line  */
+   text-decoration-line: overline; /*Subrayamos la linea  */
+   text-decoration-color: red;  /*Aplicamos el color rojo  */
+  }
+
+  h2{
+    text-decoration-line: line-through;
+    text-decoration-color: blue;
+  }
+
+  h3{
+    text-decoration-line: underline;
+    text-decoration-color: green;
+  }
+ .parrafo {
+   text-decoration-line: overline underline;
+   text-decoration-color: purple;
+   }
