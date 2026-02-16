@@ -1,0 +1,75 @@
+body{
+background-color: rgb(123, 121, 120);
+
+}
+
+.contenedorDefinicion {
+    height:auto;
+    background-color: rgb(140, 138, 138);
+    border:2px darkslateblue solid;
+    color:darkblue;
+    margin-bottom: 5px;
+
+}
+
+.cont_indent {
+    height:auto; 
+    background-color: rgb(145, 137, 137);
+    border:2px rgb(39, 26, 128) solid;
+    color:rgb(1, 1, 67);
+    margin-bottom: 5px;
+}
+.indent{
+    text-indent: 80px;
+    background-color: rgb(154, 142, 142);
+
+}
+.cont_spacing {
+    height:auto; 
+    background-color: rgb(167, 156, 156);
+    border:2px rgb(39, 26, 128) solid;
+    color:rgb(4, 4, 114);
+    margin-bottom: 5px;
+}
+
+.spacing{
+    letter-spacing: 2px;
+    background-color: rgb(184, 169, 169);
+
+}
+
+.cont_line_height {
+    height:auto;
+    background-color: rgb(172, 150, 150);
+    border:2px rgb(39, 26, 128) solid;
+    color:rgb(4, 4, 114);
+    margin-bottom: 5px;
+
+}
+
+.line_height            {
+    line-height: 2;
+     background-color: rgb(190, 168, 168);
+     border:dashed 1px;
+
+}  
+/* El span dentro de parrafos para resaltar */
+.resaltar{
+    color:rgb(186, 7, 7);
+}
+
+.cont_wordSpacing {
+    height:auto;
+    background-color: rgb(195, 164, 164);
+    border:2px rgb(39, 26, 128) solid;
+    color:rgb(4, 4, 114);
+    margin-bottom: 5px;
+    line-height: 1.2;
+
+}
+
+.wordSpacing    {
+    word-spacing: 10px;
+    background-color: rgb(219, 185, 185);
+    border:1px dashed;
+}

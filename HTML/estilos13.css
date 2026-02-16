@@ -1,0 +1,11 @@
+/* Ejercicio para ver que estilo se aplica segun el origen */
+/* Si las 3 fuentes quieren aplicar el estilo a solo etiquetas , gana el ultimo leido */
+
+h1 {
+    color:violet;
+
+}
+
+p {
+    color:green;
+}

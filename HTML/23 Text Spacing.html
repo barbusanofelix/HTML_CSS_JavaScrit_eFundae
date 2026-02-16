@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Text Spacing</title>
+        <link rel="stylesheet" href="estilos23.css" /> 
+    </head>
+    <body>
+
+        <div class="contenedorDefinicion">
+            <pre>
+        Text spacing tiene las siguientes propiedades para controlar el espacio relacionado con el texto:
+
+        text-indent
+        letter-spacing
+        line-height
+        word-spacing
+        white-space
+        </pre>
+        </div>
+        <div class="cont_indent">
+            The CSS text-indent property is used to specify the indentation of the first line in a text-block.
+
+            Tip: Negative values are allowed. The first line will be indented to the left if the value is negative.
+            Veamos un ejemlo con text-indent:80px;
+            <p class="indent">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque quae accusantium assumenda necessitatibus quisquam soluta cum exercitationem sunt optio?
+            </p>
+        </div>
+        <div class="cont_spacing">
+            The CSS letter-spacing property is used to specify the space between the characters in a text.
+            
+            Tip: Negative values are allowed.
+
+            Veamos ejemplo: 2px entre letras.
+            <p class="spacing">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque quae accusantium assumenda necessitatibus</p>
+
+        </div>
+        <div class="cont_line_height">
+            The CSS line-height property is used to specify the space between lines.
+            
+            Note: Negative values are not allowed.
+            Se refiere a la altura total que ocupa cada línea de texto, no solo al espacio "vacío" entre ellas. <span class="resaltar">Tenemos una altura base de la fuente definida: Lo que este encima de la altura de la fuente se repartira. Si la height es igual al tamaño de la fente pareceran pegadas las lineas </span>
+            
+            Note: Negative values are not allowed.
+            <p class="line_height">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, quidem! Corporis id at harum facilis recusandae sunt natus. Quibusdam quod provident nulla exercitationem veniam? Recusandae quasi qui quod fugiat commodi.</p>
+        </div>
+        <div class="cont_wordSpacing">
+            The CSS word-spacing property is used to specify the space between the words in a text.
+            
+            Tip: Negative values are allowed.
+            <p class="wordSpacing">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolores sint molestias.</p>
+        </div>
+        <div class="cont_white_spaces">
+            <pre>
+            white-space controla cómo el navegador maneja los espacios en blanco, las tabulaciones y los saltos de línea que escribes en tu código HTML.
+            
+            Por defecto, el navegador "colapsa" los espacios (si pones 10 espacios, solo muestra uno) y solo salta de línea cuando el texto llega al final del contenedor. Con esta propiedad, tú decides si quieres que se comporte como un editor de texto o como una página web estándar.
+            
+            Valores:
+            
+            1. normal (El valor por defecto)
+            Espacios: Colapsa múltiples espacios en uno solo.
+            
+            Saltos de línea: Ignora los saltos de línea que hagas con el "Enter" en tu código.
+            
+            Ajuste: El texto salta automáticamente al final del contenedor (wrap).
+            
+            2. nowrap
+            Espacios: Colapsa múltiples espacios.
+            
+            Saltos de línea: Ignora los saltos de línea.
+            
+            Ajuste: No salta de línea jamás. El texto seguirá en una sola línea infinita hacia la derecha, incluso si se sale de la pantalla. Es muy útil para botones o etiquetas de menú que no quieres que se dividan.
+            
+            3. pre
+            Espacios: Los preserva exactamente como los escribiste (como la etiqueta
+            "pre").
+            
+            Saltos de línea: Los preserva.
+            
+            Ajuste: No ajusta el texto. Si escribes una línea muy larga, se saldrá del contenedor. Se comporta como una máquina de escribir.
+            
+            4. pre-line
+            Espacios: Colapsa los espacios (solo deja uno).
+            
+            Saltos de línea: Los preserva. Si das "Enter" en tu código, verás el salto en la web.
+            
+            Ajuste: El texto saltará automáticamente al llegar al borde del contenedor. Es ideal para poemas o cartas donde los saltos de línea importan pero no los espacios extra.
+            
+            5. pre-wrap
+            Espacios: Los preserva todos.
+            
+            Saltos de línea: Los preserva.
+            
+            Ajuste: Sí ajusta el texto. A diferencia de pre, si el texto llega al borde del contenedor, saltará a la siguiente línea. Es el más equilibrado si quieres mostrar código o texto formateado manualmente sin que se rompa el diseño.
+
+            No hice los ejemplo
+
+            
+            </pre>
+        </div>
+        
+
+    </body>
+</html>

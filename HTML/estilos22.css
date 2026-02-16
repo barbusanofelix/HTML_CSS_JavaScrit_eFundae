@@ -1,0 +1,9 @@
+
+.capitalize{
+text-transform: capitalize; /* Coloca la primera letra en mayuscula */
+}
+
+.lowercase{
+/* Transforma todos los caracteres a minuscula */
+text-transform: lowercase;
+}
