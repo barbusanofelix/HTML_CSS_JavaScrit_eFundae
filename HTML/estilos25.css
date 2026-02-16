@@ -1,0 +1,29 @@
+.p1 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.p2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.p3 {
+  font-family: verdana, impact, fira code;
+}
+
+h3.font_roboto   {
+  /* Se importó con peso de 700 , que es negrita */
+  font-family: 'Roboto', sans-serif, serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6; /* Esto da más espacio entre líneas, se ve mejor */
+}
+
+h3.font_Monserrat     {
+    font-family: Monserrat, arial, serif;
+    font-size: 18px;
+    color:black;
+    line-height: 1.8;
+    font-weight: 700;
+
+}

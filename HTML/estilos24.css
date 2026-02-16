@@ -1,0 +1,47 @@
+body {
+  background-color: rgb(140, 66, 148);
+}
+/* Efecto Neón (Resplandor) */
+/* Para que el texto brille, no usamos desplazamiento ($X$ e $Y$ en $0$), sino mucho desenfoque (blur). */
+h1.neon {
+  color: white;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #00d4ff,
+    0 0 30px #00d4ff;
+  font-family: sans-serif;
+}
+
+/*  Efecto "Retro" o Pop Art */
+h1.retro {
+  /*usamos sombras con bordes duros (sin blur) y colores contrastados.  */
+  color: #ff5733;
+  text-shadow: 4px 4px 0px #c70039;
+  font-weight: bold;
+}
+
+/* Este es el más avanzado. Se logra moviendo la sombra píxel a píxel para simular volumen y variando el color aplicado de claro a oscuro  */
+h1.tresD {
+  color: white;
+  background-color: #333; /* Un fondo oscuro ayuda a ver el relieve */
+  padding: 10px;
+  text-shadow:
+    1px 1px 0px #ccc,
+    2px 2px 0px #bbb,
+    3px 3px 0px #aaa,
+    4px 4px 0px #999,
+    5px 5px 0px #888,
+    6px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+h1.clasico {
+  color: white;
+  text-shadow: 3px 6px 6px #000000;
+}
+
+
+/* El truco esta en colocar colores distintos a distancias mayor y mayor */
+h1.auracolorida   {
+  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff,0 0 15px #1007b5;
+}
