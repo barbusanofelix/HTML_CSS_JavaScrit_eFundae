@@ -1,0 +1,49 @@
+ /* Usamos la coma para aplicar la misma regla a distintos elementos BEM */
+.cont-def__intro, 
+.cont-despliegue__desglose,
+.cont-despliegue__texto {
+    white-space: pre-line;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 15px;
+}
+
+/* Estilo específico para el bloque de desglose */
+.cont-despliegue__desglose {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: monospace; /* Para que parezca código */
+}
+
+.cont-def__list--keys {
+font-family: Roboto, sans-serif;;
+
+}
+
+* --- Estilos para móviles (Pantallas de menos de 600px) --- */
+@media screen and (max-width: 600px) {
+    
+    body {
+        padding: 10px; /* Menos espacio en los bordes para aprovechar la pantalla */
+    }
+
+    h1 {
+        font-size: 24px; /* Reducimos el título principal */
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    /* Ajustamos nuestro bloque BEM para que no se vea gigante */
+    .cont-def, .cont-despliegue {
+        padding: 15px;
+        margin: 5px 0;
+    }
+
+    /* En móvil, el texto del código puede ser más pequeño para que no se corte */
+    .cont-despliegue__desglose {
+        font-size: 14px;
+        overflow-x: auto; /* Permite deslizar si el texto es muy largo */
+    }
