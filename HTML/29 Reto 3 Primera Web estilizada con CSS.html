@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Primera Web estilizada</title>
+        <link rel="stylesheet" href="estilos29.css" </head>
+    <body>
+        <header class="header">
+            <h1 id="tituloPrincipal" class="header__titulo">
+                Impresionante Japón!
+            </h1>
+            <hr>
+            <h2 id="menu" class="header__subtitulo">Menu de navegación a elementos en la misma pagina</h2>
+            <nav class="nav">
+                <!-- ul = unordered list -->
+                <h3 class="nav__titulo">Con lista desordenada</h3>
+                <ul>
+                    <li><a class="nav__link" rel="nofollow" href="#tituloPrincipal">Titulo Principal</a></li>
+                    <li><a class="nav__link" rel="nofollow" href="#p_align_centrado">A Párrafo Centrado</a></li>
+                </ul>
+                <!-- ol =ordered list -->
+                <h3 class="nav__titulo">Con Lista Ordenada</h3>
+                <ol>
+                    <li><a class="nav__link" href="#p_align_izq">A parrafo Alineado Izq.</a></li>
+                    <li><a class="nav__link" href="#p_align_der">A Parrafo alineado derecha</a></li>
+                    <li><a class="nav__link" href="#p_align_justify">A Parrafo Justificado</a></li>
+                </ol>
+            </nav>
+
+        </header>
+
+        <main>
+            <section>
+                <h2 class="section__titulo"> Fotografías paisajes Japoneses</h2>
+
+
+
+
+                <h3 class="section__subtitulo">Templos</h3>
+                <!-- p= parrafo ai=alineado izquierda -->
+                <h4 class="section__subtitulo">Parrafo alineado a la izquierda</h4>
+                <p class="section__parrafo--ai" id="p_align_izq" style="text-align:left; width:500px">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid, architecto beatae
+                    doloribus error ex
+                    harum hic maxime temporibus vitae. A adipisci at consequuntur cupiditate illum, labore laborum
+                    libero nemo nesciunt
+                    nisi quia repellat repellendus reprehenderit sapiente similique sit tempore veritatis! Atque eius
+                    esse ex, maiores
+                    repellat saepe sunt vero.
+                    <a class="section__link" href="#menu">Menu</a>
+                </p>
+
+                <img class="section__img" width="600" height="600" src="https://media.istockphoto.com/id/876560704/es/foto/fuji-de-jap%C3%B3n-en-la-primavera.jpg?s=612x612&w=0&k=20&c=xx0xzo4GV4mJdEDPztEGMuMsmeBJru28Nh0KYDSNW6E=" alt="Bello templo Japones antiguo, con arboles floridos a su alrededor y gran montaña al fondo con pico nevado y crepusculo multicolor en el cielo ">
+                <h4 class="section__subtitulo">Detalle, en párrafo justificado a la derecha</h4>
+                <p class="section__parrafo--ad" id="p_align_der" style="text-align:right; width:500px;"> Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Accusamus aliquid, architecto beatae doloribus error ex
+                    harum hic maxime temporibus vitae. A adipisci at consequuntur cupiditate illum, labore laborum
+                    libero nemo nesciunt
+                    nisi quia repellat repellendus reprehenderit sapiente similique sit tempore veritatis! Atque eius
+                    esse ex, maiores
+                    repellat saepe sunt vero.
+                    <a class="section__link" href="#menu">Menu</a>
+                </p>
+                <img class="section__img" width="600" height="600" src="https://content.r9cdn.net/rimg/dimg/77/2b/18a03dc3-lm-3981-16805560b18.jpg?width=290&height=280&xhint=1791&yhint=1651&crop=true" alt="Templo japones con mucho olor rojo">
+                <br><br>
+                <hr>
+                <h3 class="section__subtitulo">Lagos</h3>
+                <p id="p_align_justify" style="text-align:center; width:500px;">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dolore doloremque ea eligendi eum
+                    explicabo fuga id maiores mollitia, nemo nihil odit placeat quasi sequi, sit temporibus vitae. Lorem
+                    ipsum dolor sit amet, consectetur adipisicing elit. Animi dolore doloremque ea eligendi eum
+                    explicabo fuga id maiores mollitia, nemo nihil odit placeat quasi sequi, sit temporibus vitae.
+                    Eveniet, fugiat.<a class="section__link" href="#menu"> Menu </a></p>
+                <img class="section__img" width="600" height="600" src="https://www.nippon.com/es/ncommon/contents/guide-to-japan/2841384/2841384.jpg" alt="Dulce atardecer en lago muy calmado con arcos japones y fondo de montañas">
+                <h4 class="section__subtitulo">Detalles</h4>
+                <h5 class="section__subtitulo">Parrafo centrado</h5>
+                <p class="section__parrafo--ac" id="p_align_centrado" style="text-align:center; width:500px;">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dolore doloremque ea eligendi eum
+                    explicabo fuga id maiores mollitia, nemo nihil odit placeat quasi sequi, sit temporibus vitae. Lorem
+                    ipsum dolor sit amet, consectetur adipisicing elit. Animi dolore doloremque ea eligendi eum
+                    explicabo fuga id maiores mollitia, nemo nihil odit placeat quasi sequi, sit temporibus vitae.
+                    Eveniet, fugiat.<a href="#menu"> Menu </a></p>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <hr>
+            <a class="footer__link" href="#menu">Volvamos al menu</a>
+        </footer>
+    </body>
+</html>
