@@ -1,0 +1,38 @@
+/* Estilos generales para que se vea bonito */
+.contenedor {
+  width: 200px;
+  height: 200px;
+  background-color: #f0f0f0;
+  border: 2px dashed #333;
+  margin-bottom: 50px;
+  padding: 10px;
+}
+
+.hijo {
+  width: 160px;
+  height: 160px;
+  background-color: #ff4757;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10%;
+  
+  /* AQUÍ ESTÁ EL TRUCO: */
+  position: absolute;
+  
+  top: 0;
+  right: 0;
+}
+
+/* EL PODER SECRETO: */
+/* En el segundo recuadro (relative): El círculo rojo con el número 2 se quedará perfectamente alineado en la esquina superior derecha de su propia caja gris. El padre le ha dicho: "Yo soy tu límite". */
+.padre-relative {
+  position: relative; /* Esto crea un nuevo universo para el hijo */
+  /* Los hijos ( elentos dentro del padre em */
+}
+
+/* En el primer recuadro (static): El círculo rojo con el número 1 no se quedará en su caja gris. Se irá volando a la esquina superior derecha de tu navegador. Esto pasa porque, al no encontrar un padre "posicionado", se referencia al <body> de la página. */
+.padre-static {
+  /* No tiene position, por lo tanto es static por defecto */
+}
