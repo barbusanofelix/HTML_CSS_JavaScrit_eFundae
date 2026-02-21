@@ -1,0 +1,8 @@
+body {
+  background-color: hsl(59, 68%, 85%);
+}
+
+.header__titulo {
+  color: hsl(310, 97%, 36%);
+  text-align: center;
+}
