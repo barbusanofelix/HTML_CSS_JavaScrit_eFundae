@@ -1,35 +1,37 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="definicione-inicio" lang="es">
     <head>
         <meta charset="UTF-8">
         <title>Primera Web estilizada</title>
         <link rel="stylesheet" href="estilos29.css" </head>
-    <body>
+    <body class="cuerpo">
         <header class="header">
             <h1 id="tituloPrincipal" class="header__titulo">
-                Impresionante Japón!
+                Impresionante Japónes!
             </h1>
-            <hr>
+            <hr class="divisor">
             <h2 id="menu" class="header__subtitulo">Menu de navegación a
                 elementos en la misma pagina</h2>
             <nav class="nav">
                 <!-- ul = unordered list -->
                 <h3 class="nav__titulo">Con lista desordenada</h3>
-                <ul>
-                    <li><a class="nav__link" rel="nofollow" href="#tituloPrincipal">Titulo
+                <ul class="nav__listaDesordenada">
+                    <li class="nav__li"><a class="nav__link" rel="nofollow" href="#tituloPrincipal">Titulo
                             Principal</a></li>
-                    <li><a class="nav__link" rel="nofollow" href="#p_align_centrado">A Párrafo
-                            Centrado</a></li>
+                    <li class="nav__li"><a class="nav__link" rel="nofollow" href="#p_align_centrado">Párrafo
+                        Centrado</a></li>
                 </ul>
                 <!-- ol =ordered list -->
                 <h3 class="nav__titulo">Con Lista Ordenada</h3>
-                <ol>
-                    <li><a class="nav__link" href="#p_align_izq">A parrafo
-                            Alineado Izq.</a></li>
-                    <li><a class="nav__link" href="#p_align_der">A Parrafo
-                            alineado derecha</a></li>
-                    <li><a class="nav__link" href="#p_align_justify">A
-                            Parrafo Justificado</a></li>
+                <ol class="nav__listaOrdenada">
+                    <li class="nav__li"><a class="nav__link" href="#p_align_izq">Párrafo
+                            Alineado Izq.</a>
+                    </li>
+                    <li class="nav__li"><a class="nav__link" href="#p_align_der">Parrafo
+                        alineado derecha</a>
+                    </li>
+                    <li class="nav__li"><a class="nav__link" href="#p_align_justify">Parrafo Justificado</a>
+                    </li>
                 </ol>
             </nav>
 
@@ -89,9 +91,10 @@
                     </p>
                     <img class="articulo__img" width="600" height="600" src="https://content.r9cdn.net/rimg/dimg/77/2b/18a03dc3-lm-3981-16805560b18.jpg?width=290&height=280&xhint=1791&yhint=1651&crop=true" alt="Templo japones con mucho olor rojo">
 
+                    <hr class="divisor">
+
                 </article>
 
-                <hr class="articulos__divisor">
                 <article class="articulo">
                     <header class="articulo__header">
                         <h3 class="articulo__header-titulo">Lagos</h3>
@@ -124,7 +127,7 @@
                         explicabo fuga id maiores mollitia, nemo nihil odit
                         placeat quasi sequi, sit temporibus vitae.
                         Eveniet, fugiat.
-                        <a class="articulo__link"   href="#menu"> Menu </a>
+                        <a class="articulo__link" href="#menu"> Menu </a>
                     </p>
                 </article>
             </section>
@@ -132,7 +135,7 @@
         </main>
 
         <footer class="footer">
-            
+
             <a class="footer__link" href="#menu">Volvamos al menu</a>
         </footer>
     </body>
