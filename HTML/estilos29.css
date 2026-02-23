@@ -81,15 +81,12 @@
 .nav {
   /* Separamos todo el menu de navegacion , ambas listas, del borde izquierdo, en unidades relativas */
   margin: 2rem;
-  /* Damos mismo tono del fondo pero aumente el brillo  */
-  background-color: hsl(
-    var(--tonoDelFondo),
-    68%,
-    75%
-  ); /* ! hay que poner el brillo de 52 a 92% */
-  /* Limito el backgroung al tamaño del texto en el menu  */
+  /* Damos mismo tono del fondo pero menos brillo  */
+  background-color: hsl(var(--tonoDelFondo), 68%, 75%);
+  /* Limito el backgroung al tamaño del texto en el menu, y veremos el background que lo rodea  */
   width: max-content;
   border-radius: 0.8rem;
+  /* Separar del borde */
   padding: 0.8rem;
 }
 
@@ -98,12 +95,143 @@
   color: hsl(var(--tonoDelTexto), 100%, 50%);
   /* Ancho del contenido */
   width: max-content;
-  background-color: hsl(var(--tonoDelFondo), 68%, 88%);
-  border-radius: 8px;
+  background-color: hsl(var(--tonoDelFondo), 68%, 85%);
+  border-radius: 0.5rem;
   padding: 0.4rem;
   margin: 0.5rem;
+  border:solid 0.02rem hsl(var(--tonoDelTexto), 68%, 85%);
 }
 
 .nav__li {
   margin-left: 2rem;
 }
+
+.articulos__titulo {
+  /* Hacemos un cambio de fuente para cumplir con el ejercicio */
+  font-family: sans-serif;
+  /* Lo separamos del header__titulo */
+  margin-top: 0.7rem;
+  text-decoration: underline rgb(13, 185, 1);
+  font-weight: bold;
+  /* 1 rem, toma como referencia el font-size definido en el root ( por defecto 16px=1rem) */
+  /* la "r" viene de root y la "em" viene de la "M"...se tomo el ancho de la M como patron */
+  margin-bottom: 1.5rem;
+  margin-left: 2.1rem;
+}
+
+.articulo {
+/* Separamos todo el menu de navegacion , ambas listas, del borde izquierdo, en unidades relativas */
+  margin: 2rem;
+  /* Damos mismo tono del fondo pero menos brillo  */
+  background-color: hsl(var(--tonoDelFondo), 68%, 75%);
+  /* Limito el ancho al 95% del view Width */
+  width: 95vw;
+  border-radius: 0.5rem;
+  /* Separar del borde */
+  padding: 0.8rem;
+
+}
+
+.articulo__header {
+  /* Centra el background dentro de articulo  */
+width: auto;
+background-color: hsl(var(--tonoDelFondo), 68%, 85%);
+padding: 0.8rem;
+border-radius: 0.5rem;
+}
+
+.articulo__header-titulo {
+  color: hsl(var(--tonoDelTexto), 65%, 45%);
+  font-family: fantasy;
+  font-weight: initial;
+}
+
+.articulo__header-subtitulo {
+  color: hsl(var(--tonoDelTexto), 100%, 65%);
+}
+
+.articulo__parrafo {
+  /* Defino el ancho como 90% del ancho de view width ( pantalla ) */
+  width:90vw;
+  margin-bottom: 2rem;
+  color: hsl(var(--tonoDelTexto), 100%, 40%);
+}
+
+/* Parrafo centrado */
+.articulo__parrafo--justificado {
+text-align:justify;
+}
+
+.articulo__parrafo--centrado {
+text-align:center;
+}
+
+.articulo__parrafo--izquierda {
+  text-align: left;
+}
+
+.articulo__parrafo--derecha {
+text-align: right;
+}
+
+.link--irMenu {
+  /* Un link es inLine y estos ocupan solo su contenido y no la linea completa  */
+  /* Para alinearlo a la izquierda hay que convertirlo a block, que ocupa la linea */
+  display: block;
+  /* Como bloque, que ocupa toda la linea si se puede alinear a la izquierda */
+  text-align: left;
+  /* Color igual al titulo de los articulos */
+  color: hsl(var(--tonoDelTexto), 65%, 45%);
+  /* Lo resaltamos en negrita */
+  font-weight: bold;
+  /* Letra cursiva para diferenciar el link */
+  font-family: cursive;
+  /* Background del fondo para resaltar el texto */
+  background-color: hsl(var(--tonoDelFondo), 68%, 85%);
+  /* Reajustamos el ancho para que el color de background ocupe solo el ancho del texto del link */
+  width: max-content;
+  /* Separamos un poco de los lados y extendemos asi el color claro que rodea el texto */
+  padding: 0.5rem;
+  /*  Redondeamos el aura blanca que rodea el texto */
+  border-radius: 0.3rem;
+  /* Lo separamos un poquito del parrafo anterior */
+  margin-top: 0.5rem;
+}
+
+.articulo__img {
+  /* Defino el ancho de la imagen en 60% del view width ( pantalla del momento)  */
+  width:60vw;
+  /* Para que mantenga la proporcion original que la altura de ajuste sola */
+  height:auto;
+  /* Una imagen es elemento inLine ( como si fuera una letra). Como bloque ocupara toda la linea */
+  display: block;
+  /* Despues de ser block le podemos decir que le ponga margenes automaticos ( reparte por los lados) = centrar */
+  margin: auto;
+  /* Le colocamos esquinas redondeadas a todas las imagenes*/
+  border-radius:1.5rem;
+/* Separamos la imagen del fondo */
+  margin-bottom: 3rem;
+  border: solid 0.1rem hsl(var(--tonoDelTexto), 65%, 45%);
+  /* SOMBRA INTERMEDIA */
+  /* 0px (X) | 10px (Y) | 20px (Difuminado) | Color con 60% de opacidad */
+  box-shadow: 0 10px 20px hsla(var(--tonoDelTexto), 65%, 20%, 0.6);
+
+}
+
+.footer {
+/* Separamos todo el menu de navegacion , ambas listas, del borde izquierdo, en unidades relativas */
+  margin: 2rem;
+  /* Damos mismo tono del fondo pero menos brillo  */
+  background-color: hsl(var(--tonoDelFondo), 68%, 75%);
+  /* Limito el ancho al 95% del view Width */
+  width: 95vw;
+  border-radius: 0.5rem;
+  /* Separar del borde */
+  padding: 0.8rem;
+
+}
+
+
+
+
+
