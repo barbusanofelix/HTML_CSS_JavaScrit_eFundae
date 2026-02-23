@@ -38,6 +38,9 @@
 
   font-size: 100%; /* Para hacer responsive */
   line-height: 1.5; /* * Base de lectura cómoda */
+
+  /* Para tener hijos con position absolute que dependan del  body (cuerpo) */
+  position: relative;
   scroll-behavior: smooth; /* * Navegación fluida */
 
   -webkit-font-smoothing: antialiased; /* * Mejora el renderizado de letras en algunos sistemas */
@@ -66,18 +69,35 @@
   margin: 0.5rem;
 }
 
+.header {
+  /* Trabajar en conjunto con h2 , de ejemlo de position::relative */
+  position: relative;
+}
+
 .header__subtitulo {
   /* Hacemos un cambio de fuente para cumplir con el ejercicio */
   font-family: Serif;
   /* Lo separamos del header__titulo */
-  margin-top: 0.7rem;
+
   text-decoration: underline darkorchid;
   font-weight: bold;
   /* 1 rem, toma como referencia el font-size definido en el root ( por defecto 16px=1rem) */
   /* la "r" viene de root y la "em" viene de la "M"...se tomo el ancho de la M como patron */
-  margin-bottom: 2rem;
-  margin-left: 0.8rem;
+
+  /* ! Absolute: fuera del flujo normal. Flota sobre los otros y los otros elementos suben*/
+  /* ! SU PADRE ES HEADER QUE HAY QUE COLOCARLO EN position:relative; para que header__subtitulo dependa totalmente de este. */
+  position: absolute;
+  /* Su punto de referencia es el inicio del header asi que lo baje 5rem */
+  top: 5rem;
 }
+/* ! EJEMPLO DE FIXED */
+/* Necesita: Solo el fixed y ubicar el elemento. */
+.header__autor {
+  position: fixed;
+  /* Colocar a la derecha y separar del borde */
+  right: 0.5rem;
+}
+
 .nav {
   /* Separamos todo el menu de navegacion , ambas listas, del borde izquierdo, en unidades relativas */
   margin: 2rem;
@@ -88,6 +108,8 @@
   border-radius: 0.8rem;
   /* Separar del borde */
   padding: 0.8rem;
+  /* Bajar el menu de navegacion. */
+  margin-top: 3rem;
 }
 
 .nav__titulo {
@@ -99,7 +121,10 @@
   border-radius: 0.5rem;
   padding: 0.4rem;
   margin: 0.5rem;
-  border:solid 0.02rem hsl(var(--tonoDelTexto), 68%, 85%);
+  border: solid 0.02rem hsl(var(--tonoDelTexto), 68%, 85%);
+  position: relative;
+  /* right es separar 2.5rem de su lado derecho...al añadir espacios a su derecha realmente se movera a la izquierda */
+  right: 2.5rem;
 }
 
 .nav__li {
@@ -109,18 +134,23 @@
 .articulos__titulo {
   /* Hacemos un cambio de fuente para cumplir con el ejercicio */
   font-family: sans-serif;
-  /* Lo separamos del header__titulo */
-  margin-top: 0.7rem;
+
   text-decoration: underline rgb(13, 185, 1);
   font-weight: bold;
   /* 1 rem, toma como referencia el font-size definido en el root ( por defecto 16px=1rem) */
   /* la "r" viene de root y la "em" viene de la "M"...se tomo el ancho de la M como patron */
   margin-bottom: 1.5rem;
   margin-left: 2.1rem;
+  /* Lo separamos del header__titulo */
+  margin-top: 0.7rem;
+  position: sticky;
+  /* !PARA QUE SE QUEDE PEGADO, ademas de propiedad position:stiky, USAR top*/
+  /* ? SIN EL TOP  NO FUNCIONA SOLO EL STICKY ( HAY QUE DECIRLE DONDE ESTARÁ ) */
+  top: 0;
 }
 
 .articulo {
-/* Separamos todo el menu de navegacion , ambas listas, del borde izquierdo, en unidades relativas */
+  /* Separamos todo el menu de navegacion , ambas listas, del borde izquierdo, en unidades relativas */
   margin: 2rem;
   /* Damos mismo tono del fondo pero menos brillo  */
   background-color: hsl(var(--tonoDelFondo), 68%, 75%);
@@ -129,15 +159,14 @@
   border-radius: 0.5rem;
   /* Separar del borde */
   padding: 0.8rem;
-
 }
 
 .articulo__header {
   /* Centra el background dentro de articulo  */
-width: auto;
-background-color: hsl(var(--tonoDelFondo), 68%, 85%);
-padding: 0.8rem;
-border-radius: 0.5rem;
+  width: auto;
+  background-color: hsl(var(--tonoDelFondo), 68%, 85%);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
 }
 
 .articulo__header-titulo {
@@ -152,26 +181,30 @@ border-radius: 0.5rem;
 
 .articulo__parrafo {
   /* Defino el ancho como 90% del ancho de view width ( pantalla ) */
-  width:90vw;
+  width: 90vw;
   margin-bottom: 2rem;
   color: hsl(var(--tonoDelTexto), 100%, 40%);
 }
 
 /* Parrafo centrado */
 .articulo__parrafo--justificado {
-text-align:justify;
+  text-align: justify;
 }
 
 .articulo__parrafo--centrado {
-text-align:center;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .articulo__parrafo--izquierda {
   text-align: left;
+  margin-left: 2rem;
 }
 
 .articulo__parrafo--derecha {
-text-align: right;
+  text-align: right;
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
 
 .link--irMenu {
@@ -196,30 +229,31 @@ text-align: right;
   border-radius: 0.3rem;
   /* Lo separamos un poquito del parrafo anterior */
   margin-top: 0.5rem;
+
+  z-index: 999;
 }
 
 .articulo__img {
   /* Defino el ancho de la imagen en 60% del view width ( pantalla del momento)  */
-  width:60vw;
+  width: 60vw;
   /* Para que mantenga la proporcion original que la altura de ajuste sola */
-  height:auto;
+  height: auto;
   /* Una imagen es elemento inLine ( como si fuera una letra). Como bloque ocupara toda la linea */
   display: block;
   /* Despues de ser block le podemos decir que le ponga margenes automaticos ( reparte por los lados) = centrar */
   margin: auto;
   /* Le colocamos esquinas redondeadas a todas las imagenes*/
-  border-radius:1.5rem;
-/* Separamos la imagen del fondo */
+  border-radius: 1.5rem;
+  /* Separamos la imagen del fondo */
   margin-bottom: 3rem;
   border: solid 0.1rem hsl(var(--tonoDelTexto), 65%, 45%);
   /* SOMBRA INTERMEDIA */
   /* 0px (X) | 10px (Y) | 20px (Difuminado) | Color con 60% de opacidad */
   box-shadow: 0 10px 20px hsla(var(--tonoDelTexto), 65%, 20%, 0.6);
-
 }
 
 .footer {
-/* Separamos todo el menu de navegacion , ambas listas, del borde izquierdo, en unidades relativas */
+  /* Separamos todo el menu de navegacion , ambas listas, del borde izquierdo, en unidades relativas */
   margin: 2rem;
   /* Damos mismo tono del fondo pero menos brillo  */
   background-color: hsl(var(--tonoDelFondo), 68%, 75%);
@@ -228,10 +262,4 @@ text-align: right;
   border-radius: 0.5rem;
   /* Separar del borde */
   padding: 0.8rem;
-
 }
-
-
-
-
-
