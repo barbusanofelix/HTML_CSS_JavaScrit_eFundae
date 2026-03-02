@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: bisque;
+            }
+
+            .body__boton {
+                color: blue;
+                border:solid red 1px;
+                border-radius: 0.2rem;
+
+            }
+
+            .body__boton--externo {
+                background-color: rgb(189, 161, 216);
+                margin-bottom: 1rem;
+            }
+
+            .body__boton--interno {
+                  background-color: rgb(182, 238, 182);
+            }
+        </style>
+        <title>onClick</title>
+    </head>
+    <body>
+        <!-- Hay un listener en archivo externo que se activara al presionar el boton -->
+        <button id="btn" class="body__boton body__boton--externo"   ="margin-bottom: 3rem;">Presioname ( script externo) </button>
+        <br>
+        <!-- Fijate que alert completo esta entre ""  -->
+        <button class="body__boton body__boton--interno"  onclick="alert(`El codigo esta en la misma etiqueta del boton`)" > Presioname ( script en Linea )
+        </button>
+        <script src="32 onclick boton.js"></script>
+    </body>
+</html>
