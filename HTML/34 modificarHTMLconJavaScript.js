@@ -91,3 +91,8 @@ nuevoH3.classList.add("gato1", "perro");
 
 // toggle = alternar, cambiar . Si la clase existe la elimina o sino la crea.
 nuevoH3.classList.toggle("gato");
+let personas = {
+  nombre: "Felix"
+};
+
+console.log(personas.nombre);
