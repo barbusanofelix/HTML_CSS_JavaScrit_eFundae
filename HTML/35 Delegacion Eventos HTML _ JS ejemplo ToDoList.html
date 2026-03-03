@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Delegacion Eventos</title>
+        <style>
+            /* Clase que aplicaremos con toggle */
+            .completado {
+                color: rgb(236, 117, 117);
+                text-decoration: line-through;
+                background-color: #f0f0f0;
+            }
+
+            li {
+                cursor: pointer;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="miLista">
+            <li>Comprar croquetas para el gato</li>
+            <li>Estudiar JavaScript</li>
+            <li>Limpiar el arenero</li>
+        </ul>
+
+        <script>
+            const lista = document.getElementById("miLista");
+
+                lista.addEventListener('click', function (evento) {
+                    // 1. Filtramos: ¿Fue un clic en un LI?
+                    if (evento.target.tagName === "LI") {
+
+                        // 2. Usamos toggle: 
+                        // Si tiene la clase 'completado', la quita.
+                        // Si no la tiene, la pone en el LI seleccionado
+                        evento.target.classList.toggle("completado");
+                        
+                        // Estamos dentro del if y esto se ejecuta si fue un li
+                        console.log("Estado cambiado en: " + evento.target.textContent);
+                    }
+                });
+        </script>
+    </body>
+</html>

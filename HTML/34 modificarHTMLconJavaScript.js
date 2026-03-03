@@ -83,3 +83,11 @@ nuevoH3.textContent = "Gato cambiado. De un Krono hemos colodo un Lolo";
 
 // 4. Ejecutamos la inserción
 padre.insertBefore(nuevoH3, referencia);
+
+//! AÑADIR UNA CLASE A UN ELEMENTO.
+// Añade una clase al elemento, que en este caso es un h3
+//<h3 class="gato">Gato cambiado. De un Krono hemos colodo un Lolo</h3>
+nuevoH3.classList.add("gato1", "perro");    
+
+// toggle = alternar, cambiar . Si la clase existe la elimina o sino la crea.
+nuevoH3.classList.toggle("gato");
