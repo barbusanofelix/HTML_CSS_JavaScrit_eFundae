@@ -12,8 +12,8 @@
     <!-- Usamos POST porque manejaremos informacion sensible en este formulario. method="post" -->
     <!--Validacion de nombre y Apellido: Inclui que sean required. El minlength y maxlength lo recoge el pattern ( letras Minusculas, Mayuscula , vocales acentuadas, Ñ y espacios) al final donde coloco {3,40}    -->
     <body>
-
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+        <!-- Para poder procesar imagenes ( archivo) hay que colocar el atributo enctype="multipart/form-data" al formulario -->
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
             <h3>Nombre - email y Telefono</h3>
             <label for="nombre">Nombre :</label>
             <input id="nombre" type="text" name="nombre" id="inputNombre" required pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$" placeholder="Solo letras y espacio" title="El nombre debe tener entre 3 y 40 letras placeholder=" Solo letras y espacio">
@@ -35,18 +35,18 @@
             <label for="peso">Peso (kg) :</label>
             <input id="peso" type="number" name="peso">
             <label for="foto">Foto cuerpo entero</label>
-            <input id="foto" type="image">
+            <input id="foto" type="file" name="fotoCuerpoCompleto" accept="image/jpg, image/png, image7jpeg">
             <br>
             <h4>Medidas para Armadura. Circunferencia de:</h4>
             <br>
             <label for="anchoPecho">Pecho :</label>
             <input id="anchoPecho" type="number">
-            <label for="anchoCintura">Pecho :</label>
+            <label for="anchoCintura">Cintura :</label>
             <input id="anchoCintura" type="number">
-            <label for="anchoCadera">Pecho :</label>
+            <label for="anchoCadera">Cadera :</label>
             <input id="anchoCadera" type="number">
 
-
+            dirección de envío, comentarios (que es un campo de texto libre) y método de pago, con varias opciones: PayPal, transferencia bancaria, contra reembolso.
             <br>
             <button type="submit">Enviar</button>
         </form>
