@@ -10,7 +10,7 @@ const reporte = document.getElementById("reporte"); // Es el p despues del formu
 // Sintaxis: elemento.addEventListener('evento', funcion)
 
 inputNombre.addEventListener('mouseover', function(){
-    reporte.textContent = ''; // Limpia el <p> debajo del formulario
+    reporte.textContent = ""; // Limpia el <p> debajo del formulario
     
     // alert(`El codigo esta en el archivo externo de javaScript`);
 });
