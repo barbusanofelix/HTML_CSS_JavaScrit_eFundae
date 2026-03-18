@@ -1,0 +1,75 @@
+
+body                {
+background-color: beige;
+box-sizing: border-box;
+}
+
+form                {
+border: 2px solid rgb(120, 89, 49);
+padding:8px;   /* Separar dek borde los elementos internos  */
+}
+
+.body__form-grid    {/* Hacemos un grid para ordenar los campos por columnas.  */
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* Espacio entre filas */
+}
+
+
+.form__comentarios   {
+    resize: both;
+    background-color: hsl(60, 22%, 89%);
+    max-height: 50px;
+    max-width: 99%;
+}
+.form__titulos       {
+    margin-bottom: 2px;
+    margin-top: 1px;
+}
+
+.form__boton         {
+    background-color: hsl(120, 85%, 84%);
+    color: rgb(0, 0, 0);
+    border-color: hsl(120, 85%, 84%);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    margin-right: 3px;
+    margin-bottom: 2px;
+    padding: 3px;
+    
+}
+.form__boton:hover        {
+    background-color:  hsl(124, 96%, 33%);
+    color:white;
+    
+    
+}
+
+/*! HACE EL GRID */
+.form__fila {
+  display: grid;
+  gap: 10px; /* Espacio entre columnas dentro de la fila */
+  align-items: end; /* Alinea etiquetas e inputs al fondo */
+}
+
+/* ! SEGUN INDICAMOS SI LA FILA ES DE 1, 2 o 3 COLUMNAS , LE DECIMOS QUE TOME UN fr */
+.form__fila-unaColumna {grid-template-columns: 1fr;}
+.form__fila-dosColumnas {grid-template-columns: 1fr 1fr;}
+.form__fila-tresColumnas {grid-template-columns: 1fr 1fr 1fr;}
+
+/* Estilo para los grupos internos */
+.form__elementoGrid {
+  display: flex;
+  flex-direction: column; /* Etiqueta arriba del input */
+}
+
+.form__lineaSeparador       { /* a veces no se ve la linea hr y entonces le quitamos el borde */
+    border: none;       /* Quitamos el borde gris por defecto */
+    height: 2px;        /* Le damos grosor */
+    background-color: #000; /* Color de la línea (negro en este caso) */
+    margin: 1px;     /* Espacio arriba y abajo */
+
+
+}
