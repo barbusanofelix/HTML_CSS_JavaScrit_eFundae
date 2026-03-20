@@ -1,3 +1,9 @@
+<!--  Importamos para usar constantes de Patrones de validacion -->
+<?php require_once 'config.php'; ?>
+
+<!-- Importamos para usar funcion de Validar Campo Texto -->
+<?php require_once 'funciones.php'; ?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -5,6 +11,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Reto 5 Validacion Formulario</title>
         <link rel="stylesheet" href="estilos46.css">
+        <!-- Activa el uso de funcion alerta elegante -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
     <!-- FORMULARIO : ESTA VALIDADO EN EL FRONT (html) Y VALIDADO EN EL SERVIDOR-->
@@ -70,15 +78,15 @@
             <div class="form__fila  form__fila-tresColumnas">
                 <div class="form__elementoGrid"">
                     <label for=" anchoPecho">Pecho (cm):</label>
-                    <input id="anchoPecho" name="pecho" type="number" min="60" max="120">
+                    <input id="anchoPecho" name="pecho" type="number" min="60" max="120" required>
                 </div>
                 <div class="form__elementoGrid"">
                     <label for=" anchoCintura">Cintura (cm):</label>
-                    <input id="anchoCintura" name="cintura" type="number" min="50" max="125">
+                    <input id="anchoCintura" name="cintura" type="number" min="50" max="125" required>
                 </div>
                 <div class="form__elementoGrid"">
                     <label for=" anchoCadera">Cadera (cm) :</label>
-                    <input id="anchoCadera" name="cadera" type="number" min="60" max="120">
+                    <input id="anchoCadera" name="cadera" type="number" min="60" max="120" required>
                 </div>
             </div>
 
@@ -88,13 +96,14 @@
 
             <div class="form__fila  form__fila-tresColumnas">
                 <div class="form__elementoGrid"">
-                <input type=" text" name="calle" placeholder="Via:Avenida/Calle... y número" autocomplete="address-line1">
+
+                <input type=" text" name="calle" placeholder="Via:Avenida/Calle... y número" autocomplete="address-line1" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\.,\/\-#ºª]{5,100}" title="Solo letras, números y símbolos como . , / - # º ª">
                 </div>
                 <div class="form__elementoGrid"">
-                <input type=" text" name="ciudad" placeholder="Ciudad" autocomplete="address-level2">
+                <input type=" text" name="ciudad" placeholder="Ciudad" autocomplete="address-level2" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s\'-]{2,50}" title="Nombre de la Ciudad. Permitido letras, - y '">
                 </div>
                 <div class="form__elementoGrid"">
-                <input type=" text" name="cp" placeholder="Código Postal" autocomplete="postal-code">
+                <input type=" text" name="cp" placeholder="Código Postal" autocomplete="postal-code" pattern="[0-9]{5}" title="Codigo postal, solo digitos">
                 </div>
             </div>
 
@@ -103,14 +112,15 @@
 
             <h3 class="form__titulos">Comentarios</h3>
 
-            <textarea class="form__comentarios" name="comentarios" rows="4" cols="80" maxlength="250" placeholder="Si cree necesario, añada algún comentario."></textarea>
+            <textarea class="form__comentarios" name="comentarios" rows="4" cols="80" maxlength="250" placeholder="Si cree necesario, añada algún comentario." pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\.,\/\-#ºª]{5,100}"></textarea>
             <hr class="form__lineaSeparador">
             <h3 class="form__titulos">Metodo de Pago</h3>
             <!-- Radio buttoms. Por defecto: atributo checked -->
             <fieldset>
                 <legend>Selecciona un método de pago:</legend>
 
-                <input type="radio" id="tarjeta" name="metodo_pago" value="tarjeta" checked>
+                <!--Al colocar un ratio como required es como ponerle a todos  -->
+                <input type="radio" id="tarjeta" name="metodo_pago" value="tarjeta" checked required>
                 <label for="reembolso">Tarjeta debito o credito</label><br>
 
                 <input type="radio" id="paypal" name="metodo_pago" value="paypal">
@@ -135,6 +145,7 @@
         <p id="reporte"></p>
 
         <?php
+
 
         // FUNCIÓN DE VALIDACIÓN: Centraliza la lógica. 
         // Si hay error devuelve un mensaje y sino devuelve "" 
@@ -166,14 +177,15 @@
 
         }
 
-        function validarDireccion($valor)
+        function validarDireccion($valor, $min, $max)   //Valida una direccion : Via/calle/Avenida No portal...
         { // En valor llega la direccion 
             // Explicación del patrón:
             // a-zA-ZáéíóúÁÉÍÓÚñÑ -> Letras con acentos
             // 0-9                -> Números
             // \s                 -> Espacios
             // \. , \/ \- # º ª   -> Caracteres especiales permitidos (escapados)
-            // 1. Definimos el patrón de lo que SÍ permitimos (tu patrón)
+            // 1. Definimos el patrón de lo que SÍ permitimos (tu patrón).
+            // $min y max es el minimo y maximo de caracteres permitidos
             $permitidos = "a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\.,\/\-#ºª";
 
             // 2. Buscamos CUALQUIER CARÁCTER que NO esté en esa lista
@@ -181,7 +193,7 @@
             $patronProhibidos = "/[^" . $permitidos . "]/u";
 
             if (preg_match_all($patronProhibidos, $valor, $matches)) {
-                // $matches[0] contiene un array con todos los caracteres ilegales encontrados
+                // $matches[0] contiene un array con todos los caracteres ilegales encontrados y es generado por la funcion preg_match_all
         
                 // Eliminamos duplicados para no repetir el mismo error
                 $caracteresEncontrados = array_unique($matches[0]);
@@ -189,29 +201,68 @@
                 // Los unimos en una cadena para mostrarlos
                 $listaProhibida = implode(" ", $caracteresEncontrados);
 
-                echo "Error: La dirección contiene caracteres no permitidos: ** $listaProhibida **";
+                return "Error: La dirección contiene caracteres no permitidos: $listaProhibida";
             } else {
-                // Si no encontró nada prohibido, validamos la longitud
-                if (mb_strlen($valor) < 5 || mb_strlen($valor) > 100) {
-                    echo "Error: La dirección debe tener entre 5 y 100 caracteres.";
+                // Si no encontró nada prohibido, validamos la longitud. 
+                // mb_strlen es la versión "inteligente" o multibyte de la función strlen de PHP que reconoce correctamente caracteres como ñ o vocales acentuadas.
+                if (mb_strlen($valor) < $min || mb_strlen($valor) > $max) {
+                    return "Error: La calle/via... debe tener entre 5 y 100 caracteres.";
                 } else {
-                    echo "¡Dirección válida!";
+                    return '';
                 }
             }
 
         }
 
-        function caracteresNoPermitidos($valor, $patron)
-        {
+        function validarCiudad($valor, $min, $max)
+        { // En valor llega la ciudad
+            // Explicación del patrón:
+            // a-zA-ZáéíóúÁÉÍÓÚñÑ -> Letras con acentos
+            // 0-9                -> Números
+            // \s                 -> Espacios
+            // \. , \/ \- # º ª   -> Caracteres especiales permitidos (escapados)
+            // 1. Definimos el patrón de lo que SÍ permitimos (tu patrón).
+            // $min y max es el minimo y maximo de caracteres permitidos
+            $permitidos = "a-zA-ZáéíóúÁÉÍÓÚñÑ\s\'-";
 
+            // 2. Buscamos CUALQUIER CARÁCTER que NO esté en esa lista
+            // El símbolo [^ ] significa "negación"
+            $patronProhibidos = "/[^" . $permitidos . "]/u";
+
+            if (preg_match_all($patronProhibidos, $valor, $matches)) {
+                // $matches[0] contiene un array con todos los caracteres ilegales encontrados y es generado por la funcion preg_match_all
+        
+                // Eliminamos duplicados para no repetir el mismo error
+                $caracteresEncontrados = array_unique($matches[0]);
+
+                // Los unimos en una cadena para mostrarlos
+                $listaProhibida = implode(" ", $caracteresEncontrados);
+
+                return "Error: La Ciudad contiene caracteres no permitidos: $listaProhibida";
+            } else {
+                // Si no encontró nada prohibido, validamos la longitud. 
+                // mb_strlen es la versión "inteligente" o multibyte de la función strlen de PHP que reconoce correctamente caracteres como ñ o vocales acentuadas.
+                if (mb_strlen($valor) < $min || mb_strlen($valor) > $max) {
+                    return "Error: Debe tener entre $min y $max caracteres.";
+                } else {
+                    return ''; // Validacion exitosa ( No devuelve nada ) 
+                }
+            }
 
         }
+
+
+
+
 
         // Este IF es el "escudo". Solo se ejecuta EL INTENTO DE VER $_POST["nombre"], si hay un envío real.
         // Sin esto da error porque leera todo el formulario y el script pero $_POST["nombre"] es nulo al cargar por 1era vez.
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // 1. Recogemos el dato  enviado por el FORMULARIO (o "" si no existe) 
             //! ?? "" : Es un operador que en caso de ser nulo el $_POST ( ??) le asigna un valor vacio ""
+        
+            echo alerta("Entro en Validaciones");
+
             $nombreRecibido = trim($_POST["nombre"] ?? "");             // nombre. String
             $apellido1Recibido = trim($_POST["apellido1"] ?? "");             // apellido, string
             $apellido2Recibido = trim($_POST["apellido2"] ?? "");             // apellido, string
@@ -227,7 +278,13 @@
             $caderaRecibido = trim($_POST["cadera"] ?? "");             // number, integer de 60 a 120 cm
         
             $viaRecibida = trim($_POST["calle"] ?? "");                 // Via recibida
-        
+            $ciudadRecibida = trim($_POST["ciudad"] ?? "");
+            $cpRecibido = trim($_POST["cp"] ?? "");
+
+            $comentariosRecibidos = trim($_POST[""] ?? "");
+
+            $metodoPagoRecibido = trim($_POST["metodo_pago"] ?? "");
+
 
             $reporteValidacion = '';  // Creamos a reporte vacio porque luego le sumamos strings.
             $reporteValidacionError = '';   // creamos un reporte de las validaciones con error.  
@@ -243,6 +300,15 @@
             $resultadoValidarPecho = validarCampoNumerico($pechoRecibido, 'pecho', 60, 120);
             $resultadoCinturaRecibido = validarCampoNumerico($cinturaRecibido, 'cintura', 50, 125);
             $resultadoCaderaaRecibido = validarCampoNumerico($caderaRecibido, 'cadera', 60, 120);
+
+            // calle es realmente la direccion
+            $resultadoValidarCalle = validarCampoTexto($viaRecibida, ALLOWED_DIR, 5, 100, 'calle');
+            $resultadoValidarCiudad = validarCampoTexto($ciudadRecibida, ALLOWED_CITY, 2, 50, 'ciudad');
+            $resultadoValidarCp = validarCampoTexto($cpRecibido, ALLOWED_NUMERIC, 5, 5, 'cp');
+
+            $resultadoValidarComentarios = validarCampoTexto($comentariosRecibidos, ALLOWED_COMMENTS, 5, 100, 'comentarios');
+
+            $resultadoValidarMetodoPago = validarLista($metodoPagoRecibido, OPCIONES_PAGO, 'metodo_pago');
 
 
 
@@ -390,12 +456,53 @@
                     continue;
 
                 }
-
+            } // Fin del while de fotos
+            if ($resultadoValidarCalle === "") {
+                $reporteValidacionExitoso .= "<br>";
+                $reporteValidacionExitoso .= "Via :" . $viaRecibida;
+            } else {
+                $reporteValidacionError .= "<br>";
+                $reporteValidacionError .= $resultadoValidarCalle;
             }
+
+            if ($resultadoValidarCiudad === "") {
+                $reporteValidacionExitoso .= "<br>";
+                $reporteValidacionExitoso .= "Ciudad :" . $viaRecibida;
+            } else {
+                $reporteValidacionError .= "<br>";
+                $reporteValidacionError .= $resultadoValidarCiudad;
+            }
+
+            if ($resultadoValidarCp === "") {
+                $reporteValidacionExitoso .= "<br>";
+                $reporteValidacionExitoso .= "Codigo Postal :" . $cpRecibido;
+            } else {
+                $reporteValidacionError .= "<br>";
+                $reporteValidacionError .= $resultadoValidarCp;
+            }
+
+            if ($resultadoValidarMetodoPago === "") {
+                $reporteValidacionExitoso .= "<br>";
+                $reporteValidacionExitoso .= "Metodo de pago :" . $metodoPagoRecibido;
+            } else {
+                $reporteValidacionError .= "<br>";
+                $reporteValidacionError .= $resultadoValidarMetodoPago;
+            }
+
+            if ($resultadoValidarComentarios === "") {
+                $reporteValidacionExitoso .= "<br>";
+                $reporteValidacionExitoso .= "Comentarios :" . $comentariosRecibidos;
+            } else {
+                $reporteValidacionError .= "<br>";
+                $reporteValidacionError .= $resultadoValidarComentarios;
+            }
+
+
 
             $reporteValidacion .= "EXITOSO" . "<br>" . $reporteValidacionExitoso;
             $reporteValidacion .= "<br>" . "<br>";
             $reporteValidacion .= "ERRORES" . $reporteValidacionError;
+
         }
         ?>
         <!-- Para pasar la variable de php a js, hay que definirlas en este archivo porque en un archivo .js  no se reconoce php, pero aqui es php -->

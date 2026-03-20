@@ -60,5 +60,8 @@ define("ALLOWED_ALPHANUM", "a-zA-Z0-9");
 //? PATRONES ALFANUMERICO LETRAS Y NUMERICO.
 define("ALLOWED_NAME","a-zA-ZáéíóúÁÉÍÓÚñÑ\s");
 
+// Valores permitidos para el radio button "metodo_pago"
+define('OPCIONES_PAGO', ['tarjeta', 'paypal', 'transferencia', 'reembolso']);
+
 
 
