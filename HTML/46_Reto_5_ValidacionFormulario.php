@@ -59,11 +59,11 @@
             <div class="form__fila  form__fila-dosColumnas">
                 <div class="form__elementoGrid"">
                     <label for=" alto">Altura (m) :</label>
-                    <input id="alto" type="number" name="altura" step="0.01" min="1.20" max="2.10">
+                    <input id="alto" type="number" name="altura" step="0.01" min="1.20" max="2.10" required>
                 </div>
                 <div class="form__elementoGrid"">
                     <label for=" peso">Peso (kg) :</label>
-                    <input id="peso" type="number" name="peso" step="1" min="30" max="130">
+                    <input id="peso" type="number" name="peso" step="1" min="30" max="130" required>
                 </div>
             </div>
 
@@ -146,123 +146,12 @@
 
         <?php
 
-
-        // FUNCIÓN DE VALIDACIÓN: Centraliza la lógica. 
-        // Si hay error devuelve un mensaje y sino devuelve "" 
-        
-        function validarNombreApellido($valor, $nombreCampo, $min, $max)
-        {
-            // La / al inicio y la / final, antes de la u se necesitan en PHP para interpretar el patron y
-            // adicional E IMPORTANTE , la u final le dice que interprete bien las vocales acentuadas y las ñ
-            $patron = "/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{{$min},{$max}}$/u";
-
-            if (trim($valor) === "") {
-                return "El campo $nombreCampo es obligatorio. ";
-            }
-            if (!preg_match($patron, $valor)) {
-                return "El $nombreCampo debe tener entre $min y $max letras, no contener números y no ser vacio. ";
-            }
-            return ""; // Sin errores
-        }
-
-        function validarCampoNumerico($valor, $nombreCampo, $min, $max)
-        {
-
-            if (is_numeric($valor) && $valor >= $min && $valor <= $max) {
-                return ""; // Validacion exitosa.
-            } else {
-                $nombreCampo = htmlspecialchars($nombreCampo);
-                return "Error al validar el $nombreCampo, con valor de $valor,  el cual debe estar entre $min y $max";
-            }
-
-        }
-
-        function validarDireccion($valor, $min, $max)   //Valida una direccion : Via/calle/Avenida No portal...
-        { // En valor llega la direccion 
-            // Explicación del patrón:
-            // a-zA-ZáéíóúÁÉÍÓÚñÑ -> Letras con acentos
-            // 0-9                -> Números
-            // \s                 -> Espacios
-            // \. , \/ \- # º ª   -> Caracteres especiales permitidos (escapados)
-            // 1. Definimos el patrón de lo que SÍ permitimos (tu patrón).
-            // $min y max es el minimo y maximo de caracteres permitidos
-            $permitidos = "a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\.,\/\-#ºª";
-
-            // 2. Buscamos CUALQUIER CARÁCTER que NO esté en esa lista
-            // El símbolo [^ ] significa "negación"
-            $patronProhibidos = "/[^" . $permitidos . "]/u";
-
-            if (preg_match_all($patronProhibidos, $valor, $matches)) {
-                // $matches[0] contiene un array con todos los caracteres ilegales encontrados y es generado por la funcion preg_match_all
-        
-                // Eliminamos duplicados para no repetir el mismo error
-                $caracteresEncontrados = array_unique($matches[0]);
-
-                // Los unimos en una cadena para mostrarlos
-                $listaProhibida = implode(" ", $caracteresEncontrados);
-
-                return "Error: La dirección contiene caracteres no permitidos: $listaProhibida";
-            } else {
-                // Si no encontró nada prohibido, validamos la longitud. 
-                // mb_strlen es la versión "inteligente" o multibyte de la función strlen de PHP que reconoce correctamente caracteres como ñ o vocales acentuadas.
-                if (mb_strlen($valor) < $min || mb_strlen($valor) > $max) {
-                    return "Error: La calle/via... debe tener entre 5 y 100 caracteres.";
-                } else {
-                    return '';
-                }
-            }
-
-        }
-
-        function validarCiudad($valor, $min, $max)
-        { // En valor llega la ciudad
-            // Explicación del patrón:
-            // a-zA-ZáéíóúÁÉÍÓÚñÑ -> Letras con acentos
-            // 0-9                -> Números
-            // \s                 -> Espacios
-            // \. , \/ \- # º ª   -> Caracteres especiales permitidos (escapados)
-            // 1. Definimos el patrón de lo que SÍ permitimos (tu patrón).
-            // $min y max es el minimo y maximo de caracteres permitidos
-            $permitidos = "a-zA-ZáéíóúÁÉÍÓÚñÑ\s\'-";
-
-            // 2. Buscamos CUALQUIER CARÁCTER que NO esté en esa lista
-            // El símbolo [^ ] significa "negación"
-            $patronProhibidos = "/[^" . $permitidos . "]/u";
-
-            if (preg_match_all($patronProhibidos, $valor, $matches)) {
-                // $matches[0] contiene un array con todos los caracteres ilegales encontrados y es generado por la funcion preg_match_all
-        
-                // Eliminamos duplicados para no repetir el mismo error
-                $caracteresEncontrados = array_unique($matches[0]);
-
-                // Los unimos en una cadena para mostrarlos
-                $listaProhibida = implode(" ", $caracteresEncontrados);
-
-                return "Error: La Ciudad contiene caracteres no permitidos: $listaProhibida";
-            } else {
-                // Si no encontró nada prohibido, validamos la longitud. 
-                // mb_strlen es la versión "inteligente" o multibyte de la función strlen de PHP que reconoce correctamente caracteres como ñ o vocales acentuadas.
-                if (mb_strlen($valor) < $min || mb_strlen($valor) > $max) {
-                    return "Error: Debe tener entre $min y $max caracteres.";
-                } else {
-                    return ''; // Validacion exitosa ( No devuelve nada ) 
-                }
-            }
-
-        }
-
-
-
-
-
         // Este IF es el "escudo". Solo se ejecuta EL INTENTO DE VER $_POST["nombre"], si hay un envío real.
         // Sin esto da error porque leera todo el formulario y el script pero $_POST["nombre"] es nulo al cargar por 1era vez.
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // 1. Recogemos el dato  enviado por el FORMULARIO (o "" si no existe) 
             //! ?? "" : Es un operador que en caso de ser nulo el $_POST ( ??) le asigna un valor vacio ""
         
-            echo alerta("Entro en Validaciones");
-
             $nombreRecibido = trim($_POST["nombre"] ?? "");             // nombre. String
             $apellido1Recibido = trim($_POST["apellido1"] ?? "");             // apellido, string
             $apellido2Recibido = trim($_POST["apellido2"] ?? "");             // apellido, string
@@ -281,7 +170,7 @@
             $ciudadRecibida = trim($_POST["ciudad"] ?? "");
             $cpRecibido = trim($_POST["cp"] ?? "");
 
-            $comentariosRecibidos = trim($_POST[""] ?? "");
+            $comentariosRecibidos = trim($_POST["comentarios"] ?? "");
 
             $metodoPagoRecibido = trim($_POST["metodo_pago"] ?? "");
 
@@ -290,16 +179,16 @@
             $reporteValidacionError = '';   // creamos un reporte de las validaciones con error.  
             $reporteValidacionExitoso = '';
             // Si las validaciones salieron bien cada siguiente variable sera vacia ("")
-            $resultadoValidarNombre = validarNombreApellido($nombreRecibido, "nombre", 3, 40);
-            $resultadoValidarApellido1 = validarNombreApellido($apellido1Recibido, "apellido1", 3, 40);
-            $resultadoValidarApellido2 = validarNombreApellido($apellido2Recibido, "apellido2", 3, 40);
+            $resultadoValidarNombre = validarCampoTexto($nombreRecibido, ALLOWED_NAME, 3, 40, 'nombre');
+            $resultadoValidarApellido1 = validarCampoTexto($apellido1Recibido, ALLOWED_NAME, 3, 40, 'apellido1');
+            $resultadoValidarApellido2 = validarCampoTexto($apellido2Recibido, ALLOWED_NAME, 3, 40, 'apellido2');
 
-            $resultadoValidarPeso = validarCampoNumerico($pesoRecibido, 'peso', 30, 120);  // Valida peso
-            $resultadoValidarAltura = validarCampoNumerico($alturaRecibida, 'altura', 1.2, 2.10);  // Valida peso
+            $resultadoValidarPeso = validarNumero($pesoRecibido, 30, 120, 'peso'); // Valida peso
+            $resultadoValidarAltura = validarNumero($alturaRecibida, 1.2, 2.10, 'altura'); // Validar altura
         
-            $resultadoValidarPecho = validarCampoNumerico($pechoRecibido, 'pecho', 60, 120);
-            $resultadoCinturaRecibido = validarCampoNumerico($cinturaRecibido, 'cintura', 50, 125);
-            $resultadoCaderaaRecibido = validarCampoNumerico($caderaRecibido, 'cadera', 60, 120);
+            $resultadoValidarPecho = validarNumero($pechoRecibido, 60, 120, 'pecho');
+            $resultadoValidarCintura = validarNumero($cinturaRecibido, 50, 125, 'cintura');
+            $resultadoValidarCadera = validarNumero($pechoRecibido, 60, 120, 'cadera');
 
             // calle es realmente la direccion
             $resultadoValidarCalle = validarCampoTexto($viaRecibida, ALLOWED_DIR, 5, 100, 'calle');
@@ -309,8 +198,6 @@
             $resultadoValidarComentarios = validarCampoTexto($comentariosRecibidos, ALLOWED_COMMENTS, 5, 100, 'comentarios');
 
             $resultadoValidarMetodoPago = validarLista($metodoPagoRecibido, OPCIONES_PAGO, 'metodo_pago');
-
-
 
 
             if ($resultadoValidarNombre === "") {
@@ -337,10 +224,10 @@
 
             if (filter_var($emailRecibido, FILTER_VALIDATE_EMAIL)) {
                 $reporteValidacionExitoso .= "<br>"; // 
-                $reporteValidacionExitoso .= "Validacion exitosa de email  : " . $emailRecibido . "";
+                $reporteValidacionExitoso .= "Validacion exitosa de email  : " . htmlspecialchars($emailRecibido) . "";
             } else {
                 $reporteValidacionError .= "<br>";
-                $reporteValidacionError .= " Error en tipo de email: " . $emailRecibido;
+                $reporteValidacionError .= " Error en tipo de email: " . htmlspecialchars($emailRecibido);
             }
 
             // VALIDACION NUMERO TELEFONICO. Usamos patron regular ^[6789][0-9]{8}$ colocandolo entre /
@@ -348,17 +235,17 @@
             if (preg_match($patronTelefono, $telefonoRecibido)) {
                 $telefonoRecibido = htmlspecialchars($telefonoRecibido);
                 $reporteValidacionExitoso .= "<br>";
-                $reporteValidacionExitoso .= "Validacion exitosa telefono  : " . $telefonoRecibido;
+                $reporteValidacionExitoso .= "Validacion exitosa telefono  : " . htmlspecialchars($telefonoRecibido);
             } else {
                 $reporteValidacionError .= "<br>";
-                $reporteValidacionError .= "Error de Validacion del telefono" . $telefonoRecibido;
+                $reporteValidacionError .= "Error de Validacion del telefono" . htmlspecialchars($telefonoRecibido);
             }
 
 
             if ($resultadoValidarPeso === "") {
                 $reporteValidacionExitoso .= "<br>";
                 $pesoRecibido = htmlspecialchars($pesoRecibido);
-                $reporteValidacionExitoso .= "Validacion exitosa del peso " . $pesoRecibido;
+                $reporteValidacionExitoso .= "Validacion exitosa del peso " . htmlspecialchars($pesoRecibido);
 
             } else {
                 $reporteValidacionError .= "<br>";
@@ -368,7 +255,7 @@
             if ($resultadoValidarAltura === "") {
                 $reporteValidacionExitoso .= "<br>";
                 $alturaRecibida = htmlspecialchars($alturaRecibida);
-                $reporteValidacionExitoso .= "Validacion exitosa de la altura " . $alturaRecibida;
+                $reporteValidacionExitoso .= "Validacion exitosa de la altura " . htmlspecialchars($alturaRecibida);
 
             } else {
                 $reporteValidacionError .= "<br>";
@@ -378,7 +265,7 @@
             if ($resultadoValidarPecho === "") {
                 $reporteValidacionExitoso .= "<br>";
                 $pechoRecibido = htmlspecialchars($pechoRecibido);
-                $reporteValidacionExitoso .= "Validacion exitosa del pecho " . $pechoRecibido;
+                $reporteValidacionExitoso .= "Validacion exitosa del pecho " . htmlspecialchars($pechoRecibido);
 
             } else {
                 $reporteValidacionError .= "<br>";
@@ -446,7 +333,7 @@
                 if (move_uploaded_file($archivo["tmp_name"], $rutaFinal)) {
                     // echo "¡Imagen subida con éxito! Guardada como: " . $nombreLimpio;
                     $reporteValidacionExitoso .= "<br>";
-                    $reporteValidacionExitoso .= "Imagen subida con exito como " . $nombreLimpio;
+                    $reporteValidacionExitoso .= "Imagen subida con exito como " . htmlspecialchars($nombreLimpio);
 
                 } else {
                     //echo "Error crítico al mover el archivo.";
@@ -459,7 +346,7 @@
             } // Fin del while de fotos
             if ($resultadoValidarCalle === "") {
                 $reporteValidacionExitoso .= "<br>";
-                $reporteValidacionExitoso .= "Via :" . $viaRecibida;
+                $reporteValidacionExitoso .= "Via :" . htmlspecialchars($viaRecibida);
             } else {
                 $reporteValidacionError .= "<br>";
                 $reporteValidacionError .= $resultadoValidarCalle;
@@ -467,7 +354,7 @@
 
             if ($resultadoValidarCiudad === "") {
                 $reporteValidacionExitoso .= "<br>";
-                $reporteValidacionExitoso .= "Ciudad :" . $viaRecibida;
+                $reporteValidacionExitoso .= "Ciudad :" . htmlspecialchars($ciudadRecibida);
             } else {
                 $reporteValidacionError .= "<br>";
                 $reporteValidacionError .= $resultadoValidarCiudad;
@@ -475,7 +362,7 @@
 
             if ($resultadoValidarCp === "") {
                 $reporteValidacionExitoso .= "<br>";
-                $reporteValidacionExitoso .= "Codigo Postal :" . $cpRecibido;
+                $reporteValidacionExitoso .= "Codigo Postal :" . htmlspecialchars($cpRecibido);
             } else {
                 $reporteValidacionError .= "<br>";
                 $reporteValidacionError .= $resultadoValidarCp;
@@ -483,7 +370,7 @@
 
             if ($resultadoValidarMetodoPago === "") {
                 $reporteValidacionExitoso .= "<br>";
-                $reporteValidacionExitoso .= "Metodo de pago :" . $metodoPagoRecibido;
+                $reporteValidacionExitoso .= "Metodo de pago :" . htmlspecialchars($metodoPagoRecibido);
             } else {
                 $reporteValidacionError .= "<br>";
                 $reporteValidacionError .= $resultadoValidarMetodoPago;
@@ -491,7 +378,7 @@
 
             if ($resultadoValidarComentarios === "") {
                 $reporteValidacionExitoso .= "<br>";
-                $reporteValidacionExitoso .= "Comentarios :" . $comentariosRecibidos;
+                $reporteValidacionExitoso .= "Comentarios :" . htmlspecialchars($comentariosRecibidos);
             } else {
                 $reporteValidacionError .= "<br>";
                 $reporteValidacionError .= $resultadoValidarComentarios;
@@ -502,7 +389,8 @@
             $reporteValidacion .= "EXITOSO" . "<br>" . $reporteValidacionExitoso;
             $reporteValidacion .= "<br>" . "<br>";
             $reporteValidacion .= "ERRORES" . $reporteValidacionError;
-
+            str_replace("<br>", " ", $reporteValidacionError);
+            echo alerta($reporteValidacionError);
         }
         ?>
         <!-- Para pasar la variable de php a js, hay que definirlas en este archivo porque en un archivo .js  no se reconoce php, pero aqui es php -->
