@@ -10,6 +10,7 @@
     <body>
         <div class="contenedor">
             <h1>Calculadora de Salud</h1>
+            <h2>"${pageContext.request.contextPath}"</h2>
             <p>Introduce tus datos para calcular el Índice de Masa Corporal</p>
 
             <form action="CalcularImc" method="get">
