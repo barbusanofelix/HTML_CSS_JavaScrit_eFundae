@@ -1,0 +1,13 @@
+El ambiente virtual esta en la carpeta venv_python
+
+
+Activarlo: ( Vamos a la terminal , dentro de la carpeta PYTHON y escribimos )
+
+venv_python\Scripts\activate
+
+Lo anterior le indica: Vete a la carpeta venv_python y dentro de ella a la carpeta Scripts y ejecuta el comando activate.
+
+Si se activa correctamente, al inicio de la linea veremos en verde  (venv_python)
+
+
+ 

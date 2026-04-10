@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reporte Django Pro</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f2f5;
+        padding: 40px;
+      }
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+      .btn-volver {
+        text-decoration: none;
+        background-color: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: bold;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th {
+        background-color: #2c3e50;
+        color: white;
+        padding: 15px;
+        text-align: left;
+      }
+      td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #ddd;
+      }
+      tr:hover {
+        background-color: #f8f9fa;
+      }
+      .texto-entrada {
+        color: #28a745;
+        font-weight: bold;
+      }
+      .texto-salida {
+        color: #dc3545;
+        font-weight: bold;
+      }
+      .total-container {
+        text-align: right;
+        font-size: 1.2rem;
+        padding: 20px;
+        background: #2c3e50;
+        color: white;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>📊 Reporte de Inventario</h1>
+        <a href="{% url 'index' %}" class="btn-volver">← Volver al Inicio</a>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Costo</th>
+            <th>Entradas</th>
+            <th>Salidas</th>
+            <th>Stock</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in productos %}
+            <tr>
+              <td>
+                <strong>{{ p.codigo }}</strong>
+              </td>
+              <td>{{ p.descripcion }}</td>
+              <td>{{ p.costo }}€</td>
+              <td class="texto-entrada">+{{ p.entradas }}</td>
+              <td class="texto-salida">-{{ p.salidas }}</td>
+              <td>{{ p.stock_actual }}</td>
+              <td>{{ p.valor_inventario }}€</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="total-container">
+        VALOR TOTAL DEL ALMACÉN: <strong>{{ total }}€</strong>
+      </div>
+    </div>
+  </body>
+</html>
+
+{% comment %}
+
+<div class="container">
+  <div class="header">
+    <h1>📊 Reporte de Inventario (Django Edition)</h1>
+    <a href="{% url 'index' %}" class="btn-volver">← Volver al Inicio</a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Descripción</th>
+        <th>Costo</th>
+        <th>Stock</th>
+        <th>Valor Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in productos %}
+        <tr>
+          <td>
+            <span class="badge-codigo">{{ p.codigo }}</span>
+          </td>
+          <td>{{ p.descripcion }}</td>
+          <td>{{ p.costo }}€</td>
+          <td>{{ p.stock_actual }}</td>
+          <td>{{ p.valor_inventario }}€</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div> {% endcomment %}

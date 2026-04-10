@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Inventario</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Cabecera y Botón */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn-volver {
+            text-decoration: none;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-volver:hover {
+            background-color: #5a6268;
+        }
+
+        /* Tabla Estilizada */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            text-align: left;
+            padding: 15px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Colores para datos */
+        .badge-codigo {
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .texto-entrada { color: #28a745; font-weight: bold; }
+        .texto-salida { color: #dc3545; font-weight: bold; }
+
+        /* Pie de página del reporte */
+        .total-container {
+            text-align: right;
+            font-size: 1.2rem;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .total-monto {
+            font-weight: bold;
+            color: #4db6ac;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>📊 Reporte de Inventario</h1>
+        <a href="/" class="btn-volver">← Volver al Inicio</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Costo Unit.</th>
+                <th>Entradas</th>
+                <th>Salidas</th>
+                <th>Stock</th>
+                <th>Valor Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in productos %}
+            <tr>
+                <td><span class="badge-codigo">{{ p.codigo }}</span></td>
+                <td>{{ p.descripcion }}</td>
+                <td>{{ p.costo }}€</td>
+                <td class="texto-entrada">+{{ p.entradas }}</td>
+                <td class="texto-salida">-{{ p.salidas }}</td>
+                <td style="font-weight: bold;">{{ p.stock_actual }}</td>
+                <td>{{ p.valor_inventario }}€</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="total-container">
+        VALOR TOTAL DEL ALMACÉN: <span class="total-monto">{{ total }}€</span>
+    </div>
+</div>
+
+</body>
+</html>

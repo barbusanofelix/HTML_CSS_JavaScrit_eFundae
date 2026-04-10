@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Inventario - Django</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; margin: 0; padding: 40px; }
+        .container { max-width: 900px; margin: auto; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;}
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; flex-direction: column;}
+        h2 { color: #2c3e50; margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        label { display: block; margin: 10px 0 5px; color: #666; font-size: 0.9rem; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        .btn { display: block; width: 100%; padding: 12px; margin-top: 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; color: white; }
+        .btn-green { background-color: #28a745; text-decoration: none; text-align: center; margin-bottom: 20px; }
+        .btn-blue { background-color: #007bff; }
+        .btn-orange { background-color: #fd7e14; }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        form{display: flex; flex-direction: column; flex-grow: 1;}
+        .btn-blue, .btn-orange {margin-top: auto;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="{% url 'reporte' %}" class="btn btn-green">📊 Ir al Reporte de Inventario</a>
+
+    <div class="grid">
+        <div class="card">
+            <h2>🆕 Nuevo Producto</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <label>Código:</label>
+                <input type="text" name="codigo" placeholder="Ej: PROD004" required>
+                
+                <label>Descripción:</label>
+                <input type="text" name="descripcion" placeholder="Nombre del artículo" required>
+                
+                <label>Costo (€):</label>
+                <input type="number" step="0.01" name="costo" required>
+                
+                <label>Stock Inicial:</label>
+                <input type="number" name="inicial" value="0">
+                
+                <button type="submit" name="crear_producto" class="btn btn-blue">Registrar Producto</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>🔄 Movimiento</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <label>Código del Producto:</label>
+                <input type="text" name="codigo_mov" placeholder="Código existente" required>
+                
+                <label>Tipo:</label>
+                <select name="tipo">
+                    <option value="entrada">Entrada (+)</option>
+                    <option value="salida">Salida (-)</option>
+                </select>
+                
+                <label>Cantidad:</label>
+                <input type="number" name="cantidad" min="1" required>
+                
+                <button type="submit" name="actualizar_stock" class="btn btn-orange">Actualizar Stock</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gestión de Inventario - Django</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        font-size: 1.5rem;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 6px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        border: none;
+        transition: 0.3s;
+      }
+      .btn-reporte {
+        background-color: #28a745;
+        color: white;
+      }
+      .btn-reporte:hover {
+        background-color: #218838;
+      }
+      
+      .btn-submit {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+      }
+      .btn-submit:hover {
+        background-color: #0069d9;
+      }
+      
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      label {
+        font-size: 0.9rem;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>📦 Panel de Control</h1>
+
+      <a href="{% url 'reporte' %}" class="btn btn-reporte">📊 Ver Reporte Completo</a>
+
+      <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;" />
+
+      <form action="{% url 'reporte' %}" method="POST">
+        {% csrf_token %} <label>Código del Producto:</label>
+        <input type="text" name="codigo" placeholder="Ej: PROD001" required />
+
+        <label>Tipo de Operación:</label>
+        <select name="tipo">
+          <option value="entrada">Entrada (+)</option>
+          <option value="salida">Salida (-)</option>
+        </select>
+
+        <label>Cantidad:</label>
+        <input type="number" name="cantidad" min="1" value="1" required />
+
+        <button type="submit" class="btn btn-submit">Actualizar Inventario</button>
+      </form>
+    </div>
+  </body>
+</html> {% endcomment %}
