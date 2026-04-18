@@ -1,0 +1,72 @@
+<!-- 
+ *****************************************************************************
+index.ejs original - todo comentado 
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1>Bienvenido a la Biblioteca (Vengo de index.ejs dentro de src/views/)</h1>
+        <h2>Ya esta actualizado al index.js pero no tiene libro aca y eso parece que hace que no de error</h2>
+    </body>
+</html> 
+*******************************************************************************
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body class="container">
+
+        <header class="header">
+            <h1 class="header__title"><%= title %></h1>
+        </header>
+
+        <main>
+            <section class="form-section">
+                <h2 class="form-section__title">Añadir nuevo libro</h2>
+                <form action="/agregar" method="POST" class="form">
+                    <input type="text" name="titulo" placeholder="Título del libro" class="form__input" required>
+                    <input type="text" name="autor" placeholder="Autor" class="form__input" required>
+                    <input type="text" name="genero" placeholder="Género" class="form__input">
+                    <input type="number" name="fechaPublicacion" placeholder="Año" class="form__input">
+                    <button type="submit" class="form__button">Guardar Libro</button>
+                </form>
+            </section>
+
+            <hr>
+
+            <section class="list-section">
+                <h2 class="list-section__title">Mi Colección</h2>
+                <div class="book-grid">
+                    <% if (libros.length > 0) { %>
+                    <% libros.forEach(libro => { %>
+                    <article class="book-card">
+                        <h3 class="book-card__title"><%= libro.titulo %></h3>
+                        <p class="book-card__author">Autor: <%= libro.autor %></p>
+                        <p class="book-card__genre">Género: <%= libro.genero %></p>
+                        <p class="book-card__year">Año: <%= libro.fechaPublicacion %></p>
+
+                        <div class="book-card__actions">
+                            <!-- Agregamos aqui el boton para borrar/Eliminar el libro -->
+                            <a href="/eliminar/<%= libro._id %>" class="button button--delete" onclick="return confirm('¿Seguro que quieres eliminar este libro?')">Eliminar</a>
+                            <!-- Agregamos aqui el boton para editar/modificar el libro -->
+                            <a href="/editar/<%= libro._id %>" class="button button--edit">Editar</a>
+                        </div>
+                    </article>
+                    <% }) %>
+                    <% } else { %>
+                    <p>No hay libros en la biblioteca todavía.</p>
+                    <% } %>
+                </div>
+            </section>
+        </main>
+
+    </body>
+</html>

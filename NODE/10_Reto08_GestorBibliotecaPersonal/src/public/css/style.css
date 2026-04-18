@@ -1,0 +1,181 @@
+/* --- Base --- */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Header --- */
+.header {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--primary-color);
+}
+
+.header__title {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* --- Form Section (BEM) --- */
+.form-section {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.form-section__title {
+    margin-top: 0;
+    color: var(--secondary-color);
+}
+
+.form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.form__input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form__button {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.form__button:hover {
+    background-color: #2980b9;
+}
+
+/* --- Book List Section (BEM) --- */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.book-card {
+    background: var(--white);
+    padding: 15px;
+    border-left: 5px solid var(--secondary-color);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.book-card__title {
+    margin: 0 0 10px 0;
+    color: var(--primary-color);
+}
+
+.book-card__author, 
+.book-card__genre, 
+.book-card__year {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+/* --- Botones y Acciones --- */
+.book-card__actions {
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.button {
+    text-decoration: none;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.button--delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.button--delete:hover {
+    background-color: #c0392b;
+}
+
+/* Estilos para el boton editar */
+.button--edit {
+    background-color: #f39c12; /* Naranja */
+    color: white;
+    margin-right: 5px;
+}
+
+.button--edit:hover {
+    background-color: #e67e22;
+}
+
+/* Estilos para boton cancelar */
+.button--cancel {
+    background-color: #95a5a6; /* Gris azulado */
+    color: white;
+    text-align: center;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 0; /* Para alinearlo bien en el grid */
+}
+
+.button--cancel:hover {
+    background-color: #7f8c8d;
+    color: white;
+}
+
+/* Contenedor de botones para que se alineen horizontalmente ( Confirmar cambios y cancelar en editar.ejs) */
+.form__group {
+    display: flex;       /* Alinea los hijos en fila */
+    gap: 10px;           /* Espacio entre botones */
+    align-items: center; /* Centra verticalmente */
+    grid-column: 1 / -1; /* Hace que el grupo ocupe todo el ancho del grid si es necesario */
+    margin-top: 10px;
+}
+
+/* Ajuste opcional para que los botones tengan el mismo "feeling" */
+.form__button, .button--cancel {
+    margin: 0; 
+    flex: 1;            /* Opcional: hace que ambos botones midan lo mismo */
+    max-width: 200px;   /* Opcional: evita que sean gigantes */
+}
+
+/* Asegura alturas iguales de boton Cancelar y boton de confirmar cambios*/
+.button--cancel {
+    padding: 7px 20px; /* Ajusta según el padding de tu .form__button: Lo ajuste a 7px para misma altura que boton Actualizar Cambios */
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

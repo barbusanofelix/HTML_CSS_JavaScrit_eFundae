@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body class="container">
+        <header class="header">
+            <h1 class="header__title">Editar: <%= libro.titulo %></h1>
+        </header>
+
+        <section class="form-section">
+            <form action="/editar/<%= libro._id %>" method="POST" class="form">
+                <input type="text" name="titulo" value="<%= libro.titulo %>" class="form__input" required>
+                <input type="text" name="autor" value="<%= libro.autor %>" class="form__input" required>
+                <input type="text" name="genero" value="<%= libro.genero %>" class="form__input">
+                <input type="number" name="fechaPublicacion" value="<%= libro.fechaPublicacion %>" class="form__input">
+
+                <!-- <button type="submit" class="form__button">Actualizar Cambios</button> -->
+                <!-- <a href="/" style="text-align: center; margin-top: 10px; color: #7f8c8d;">Cancelar</a> -->
+                <div class="form__group"> <button type="submit" class="form__button">Actualizar Cambios</button>
+                    <a href="/" class="button button--cancel">Cancelar</a>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>
