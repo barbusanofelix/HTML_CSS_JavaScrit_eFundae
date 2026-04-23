@@ -1,0 +1,54 @@
+@model ToDoApp.Models.Tarea
+
+<section class="task-form">
+    <h1 class="task-form__title">Editar Tarea</h1>
+
+    <form asp-action="Editar" method="post" enctype="multipart/form-data" class="form">
+        @* Campos ocultos vitales *@
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="RutaAdjunto" />
+
+        <div class="form__group">
+            <label asp-for="Titulo" class="form__label"></label>
+            <input asp-for="Titulo" class="form__input" />
+        </div>
+
+        <div class="form__group">
+            <label asp-for="AsignadoA" class="form__label"></label>
+            <input asp-for="AsignadoA" class="form__input" />
+        </div>
+
+        <div class="form__group">
+            <label asp-for="FechaVencimiento" class="form__label"></label>
+            <input asp-for="FechaVencimiento" class="form__input" type="datetime-local" />
+        </div>
+
+        <div class="form__group">
+            <label asp-for="Lugar" class="form__label"></label>
+            <input asp-for="Lugar" class="form__input" />
+        </div>
+
+        <div class="form__group">
+            <label asp-for="Direccion" class="form__label"></label>
+            <input asp-for="Direccion" class="form__input" />
+        </div>
+
+        <div class="form__group">
+            <label asp-for="Notas" class="form__label"></label>
+            <textarea asp-for="Notas" class="form__textarea"></textarea>
+        </div>
+
+        <div class="form__group">
+            <label class="form__label">Cambiar Adjunto (Opcional)</label>
+            <input type="file" name="nuevoAdjunto" class="form__input" />
+            @if (!string.IsNullOrEmpty(Model.RutaAdjunto)) {
+                <p><small>Archivo actual: @Model.RutaAdjunto</small></p>
+            }
+        </div>
+
+        <div class="form__actions">
+            <button type="submit" class="button button--success">Guardar Cambios</button>
+            <a asp-action="Index" class="button button--link">Cancelar</a>
+        </div>
+    </form>
+</section>

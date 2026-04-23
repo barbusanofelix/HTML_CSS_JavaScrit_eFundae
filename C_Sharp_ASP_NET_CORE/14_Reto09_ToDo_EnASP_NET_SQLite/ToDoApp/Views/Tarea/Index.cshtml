@@ -1,0 +1,92 @@
+@model IEnumerable<ToDoApp.Models.Tarea>
+    @* El @model le dice a la vista qué tipo de datos va a recibir (una lista de tareas) *@
+
+    @{
+    ViewData["Title"] = "Mis Tareas";
+    }
+
+    <section class="task-manager">
+        <h1 class="task-manager__title">Gestor de Tareas</h1>
+
+        <div class="task-manager__actions">
+            @* Este enlace nos llevará al método "Crear" del controlador *@
+            <a asp-action="Crear" class="button button--primary">+ Nueva Tarea</a>
+        </div>
+
+        @* --- AQUÍ VAN LOS FILTROS --- *@
+        <div class="task-manager__filters">
+            <form asp-action="Index" method="get" class="filter-form">
+                <label class="filter-form__label">Mostrar:</label>
+                <select name="filtro" class="filter-form__select" onchange="this.form.submit()">
+                    <!option value="todas" @(ViewBag.FiltroActual=="todas" ? "selected" : "" )>Todas</!option>
+                    <!option value="activas" @(ViewBag.FiltroActual=="activas" ? "selected" : "" )>Solo Activas</!option>
+                    <!option value="completadas" @(ViewBag.FiltroActual=="completadas" ? "selected" : "" )>Solo Completadas</!option>
+                </select>
+
+                <label class="filter-form__label">Ordenar por:</label>
+                <select name="orden" class="filter-form__select" onchange="this.form.submit()">
+                    <!option value="fecha" @(ViewBag.OrdenActual=="fecha" ? "selected" : "" )>Fecha Vencimiento</!option>
+                    <!option value="nombre" @(ViewBag.OrdenActual=="nombre" ? "selected" : "" )>Nombre</!option>
+                    <!option value="persona" @(ViewBag.OrdenActual=="persona" ? "selected" : "" )>Persona</!option>
+                </select>
+            </form>
+        </div>
+        @* --- FIN DE LOS FILTROS --- *@
+
+        <div class="task-list">
+            @if (!Model.Any())
+            {
+            <p class="task-list__empty">No hay tareas pendientes. ¡Disfruta tu día!</p>
+            }
+            else
+            {
+            @foreach (var tarea in Model)
+            {
+            @* Estructura BEM: Bloque (task-card), Elemento (__title) *@
+            <article class="task-card @(tarea.EstaCompletada ? " task-card--completed" : "" )">
+                <div class="task-card__content">
+                    <h3 class="task-card__title">@tarea.Titulo</h3>
+                    
+                    <p class="task-card__info"><strong>Para:</strong> @tarea.AsignadoA</p>
+                    <p class="task-card__info"><strong>Vence:</strong> @tarea.FechaVencimiento.ToShortDateString()</p>
+                    <p class="task-card__location">📍 @tarea.Lugar</p>
+
+                    @* Lógica para el Adjunto *@
+                    @if (!string.IsNullOrEmpty(tarea.RutaAdjunto))
+                    {
+                    <div class="task-card__attachment">
+                        <a href="~/uploads/@tarea.RutaAdjunto" target="_blank" title="Clic para ver archivo">
+                            @if (tarea.RutaAdjunto.EndsWith(".png") || tarea.RutaAdjunto.EndsWith(".jpg") || tarea.RutaAdjunto.EndsWith(".jpeg"))
+                            {
+                            <img src="~/uploads/@tarea.RutaAdjunto" alt="Adjunto" class="task-card__image-preview" />
+                            }
+                            else
+                            {
+                            @* Si no es imagen (ej. un PDF), mostramos un texto o icono *@
+                            <span class="button button--link">📎 Ver Documento</span>
+                            }
+                        </a>
+                    </div>
+                    }
+
+
+                    <div class="task-card__actions">
+                        <a asp-action="MarcarComoCompletada" asp-route-id="@tarea.Id" class="button @(tarea.EstaCompletada ? " button--success" : "button--primary" )"> @(tarea.EstaCompletada ? "Reabrir" : "Completar")</a>
+                        @* Botón de Editar *@
+                        <a asp-action="Editar" asp-route-id="@tarea.Id" class="button button--secondary">
+                            Editar
+                        </a>
+                        @* Botón de borrar con una pequeña advertencia de JavaScript *@
+                        <a asp-action="Borrar" asp-route-id="@tarea.Id" class="button button--danger" 
+                        onclick="return confirm('¿Seguro que quieres eliminar esta tarea?')">
+                        Eliminar
+                       </a>
+                    </div>
+
+
+                </div>
+            </article>
+            }
+            }
+        </div>
+    </section>

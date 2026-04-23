@@ -1,0 +1,72 @@
+@model ToDoApp.Models.Tarea
+@* Aquí recibimos una Tarea individual, no una lista, porque vamos a crear UNA *@
+
+@{
+    ViewData["Title"] = "Nueva Tarea";
+}
+
+<section class="task-form">
+    <h1 class="task-form__title">Agregar Nueva Tarea</h1>
+
+    @* El asp-action="Crear" le dice al formulario que al presionar enviar, 
+       busque el método [HttpPost] Crear en el controlador *@
+       @* Linea original  *@
+    @* <form asp-action="Crear" method="post" class="form"> *@
+@* Añadimos el atributo enctype="multipart/form-data"  para recibir un archivo *@
+    <form asp-action="Crear" method="post" enctype="multipart/form-data" class="form">
+        
+        @* Título *@
+        <div class="form__group">
+            <label asp-for="Titulo" class="form__label"></label>
+            <input asp-for="Titulo" class="form__input" />
+            <span asp-validation-for="Titulo" class="form__error"></span>
+        </div>
+
+        @* Asignado a *@
+        <div class="form__group">
+            <label asp-for="AsignadoA" class="form__label"></label>
+            <input asp-for="AsignadoA" class="form__input" />
+        </div>
+
+        @* Fecha de Vencimiento *@
+        <div class="form__group">
+            <label asp-for="FechaVencimiento" class="form__label"></label>
+            <input asp-for="FechaVencimiento" class="form__input" type="datetime-local" />
+        </div>
+
+        @* Lugar *@
+        <div class="form__group">
+            <label asp-for="Lugar" class="form__label"></label>
+            <input asp-for="Lugar" class="form__input" />
+        </div>
+
+        @* Direccion *@
+        <div class="form__group">
+            <label asp-for="Direccion" class="form__label"></label>
+            <input asp-for="Direccion" class="form__input" />
+        </div>
+
+        @* Notas *@
+        <div class="form__group">
+            <label asp-for="Notas" class="form__label"></label>
+            <textarea asp-for="Notas" class="form__textarea"></textarea>
+        </div>
+
+        @* Añadimos este div para adjuntar documentos *@
+        <div class="form__group">
+            <label class="form__label">Adjuntar Foto o Documento</label>
+            <input type="file" name="archivoAdjunto" class="form__input" />
+        </div>
+
+        <div class="form__actions">
+            <button type="submit" class="button button--success">Guardar Tarea</button>
+            <a asp-action="Index" class="button button--link">Cancelar</a>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    @* Esto activa las validaciones del lado del cliente para que no se envíe 
+       el formulario si faltan campos obligatorios *@
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

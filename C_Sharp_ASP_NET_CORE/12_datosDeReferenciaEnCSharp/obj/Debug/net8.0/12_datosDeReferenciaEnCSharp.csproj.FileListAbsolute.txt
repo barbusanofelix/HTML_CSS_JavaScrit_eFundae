@@ -1,0 +1,15 @@
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\bin\Debug\net8.0\12_datosDeReferenciaEnCSharp.exe
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\bin\Debug\net8.0\12_datosDeReferenciaEnCSharp.deps.json
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\bin\Debug\net8.0\12_datosDeReferenciaEnCSharp.runtimeconfig.json
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\bin\Debug\net8.0\12_datosDeReferenciaEnCSharp.dll
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\bin\Debug\net8.0\12_datosDeReferenciaEnCSharp.pdb
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\12_datosDeReferenciaEnCSharp.GeneratedMSBuildEditorConfig.editorconfig
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\12_datosDeReferenciaEnCSharp.AssemblyInfoInputs.cache
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\12_datosDeReferenciaEnCSharp.AssemblyInfo.cs
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\12_datosDeReferenciaEnCSharp.csproj.CoreCompileInputs.cache
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\12_datosDeReferenciaEnCSharp.sourcelink.json
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\12_datosDeReferenciaEnCSharp.dll
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\refint\12_datosDeReferenciaEnCSharp.dll
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\12_datosDeReferenciaEnCSharp.pdb
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\12_datosDeReferenciaEnCSharp.genruntimeconfig.cache
+E:\Python\WorkSpace curso Python_HTML_CSS_JavaScript\14 CURSO PROGRAMACION WEB DE eFUNDAE\C_Sharp_ASP_NET_CORE\12_datosDeReferenciaEnCSharp\obj\Debug\net8.0\ref\12_datosDeReferenciaEnCSharp.dll

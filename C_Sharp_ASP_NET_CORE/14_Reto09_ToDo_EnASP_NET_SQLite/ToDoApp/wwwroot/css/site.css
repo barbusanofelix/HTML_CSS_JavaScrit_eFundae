@@ -1,0 +1,172 @@
+/* Solucion para el footer que no se mantenia al final de la pagina */
+/* Ajuste para que el cuerpo ocupe al menos el alto de la pantalla */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+
+
+
+/* 1. Estilos Base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    /* Ajustar que el footer se mantenga abajo */
+    margin-bottom: 60px;
+}
+
+/* 2. Bloque: task-manager (El contenedor principal) */
+.task-manager {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.task-manager__title {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+/*  Bloque de Filtro y ordenar en Index.cshtml */
+.task-manager__filters  {
+margin-top:15px;
+
+}
+
+
+/* 3. Bloque: task-card (Cada tarea) */
+.task-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.task-card {
+    background: white;
+    border-left: 5px solid #3498db;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+}
+
+.task-card__title {
+    margin-top: 0;
+    color: #2980b9;
+    font-size: 1.4rem;
+}
+
+.task-card__info {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+}
+
+.task-card__location {
+    color: #e67e22;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* 4. Modificador: Tarea completada */
+.task-card--completed {
+    border-left-color: #27ae60;
+    opacity: 0.7;
+}
+
+/* 5. Botones */
+.button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.button--primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.button--success {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* 6. Formulario */
+.form__group {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__label {
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+.form__input, .form__textarea {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/* Para Tareas completadas */
+.task-card--completed .task-card__title {
+    text-decoration: line-through;
+    color: #7f8c8d;
+}
+
+.task-card--completed {
+    border-left-color: #27ae60; /* Verde */
+    background-color: #f9f9f9;
+}
+
+/* PARA EL CONTENEDOR DE IMAGENES EN LA CARD DE LA TAREA */
+/* Elemento: Contenedor del adjunto */
+.task-card__attachment {
+    margin: 1rem 0;
+    padding-top: 0.5rem;
+    border-top: 1px dashed #ddd;
+}
+
+/* Elemento: La miniatura de la imagen */
+.task-card__image-preview {
+    max-width: 150px; /* Tamaño de miniatura */
+    max-height: 100px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.task-card__image-preview:hover {
+    transform: scale(1.05); /* Pequeño efecto de zoom al pasar el mouse */
+    cursor: zoom-in;
+}
+
+/* Boton de edicion de tareas */
+.button--secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+/* Boton para borrado Tarea */
+.button--danger {
+    background-color: #e74c3c; /* Rojo */
+    color: white;
+    margin-left: 0.5rem;
+}
+
+.button--danger:hover {
+    background-color: #c0392b;
+}
